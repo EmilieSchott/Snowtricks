@@ -18,7 +18,7 @@ class FigureFormController extends AbstractController
         <h1>Formulaire de modification d'une figure</h1>
 EOF
         );
-        /*return $this->render('figure_form/index.html.twig', [
+        /*return $this->render('figure_form.html.twig', [
             'controller_name' => 'FigureFormController',
         ]);*/
     }

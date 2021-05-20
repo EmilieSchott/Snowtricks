@@ -18,7 +18,7 @@ class ShowFigureController extends AbstractController
         <h1>Page de présentation d'une figure</h1>
 EOF
         );
-        /*return $this->render('show_figure/index.html.twig', [
+        /*return $this->render('show_figure.html.twig', [
             'controller_name' => 'ShowFigureController',
         ]);*/
     }

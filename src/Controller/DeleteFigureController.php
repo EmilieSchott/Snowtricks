@@ -18,8 +18,5 @@ class DeleteFigureController extends AbstractController
         <h1>Suppression d'une figure</h1>
 EOF
         );
-        /*return $this->render('delete_figure/index.html.twig', [
-            'controller_name' => 'DeleteFigureController',
-        ]);*/
     }
 }
