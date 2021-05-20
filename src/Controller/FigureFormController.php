@@ -6,10 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ModifyFigureController extends AbstractController
+class FigureFormController extends AbstractController
 {
     /**
-     * @Route("/modify/figure", name="modify_figure")
+     * @Route("/form/figure", name="figure_form")
      */
     public function index(): Response
     {
@@ -18,8 +18,8 @@ class ModifyFigureController extends AbstractController
         <h1>Formulaire de modification d'une figure</h1>
 EOF
         );
-        /*return $this->render('modify_figure/index.html.twig', [
-            'controller_name' => 'ModifyFigureController',
+        /*return $this->render('figure_form/index.html.twig', [
+            'controller_name' => 'FigureFormController',
         ]);*/
     }
 }
