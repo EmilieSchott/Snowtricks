@@ -24,7 +24,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .active {
-    color : #006699
+    color: #006699;
+}
+
+.nav-link:hover {
+    color: #395f77;
 }
 
 
@@ -51,8 +55,6 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 992px) {
     footer{
-        position: absolute;
-        bottom: 0;
         width: 100%;
         height: 90px;
         line-height: 90px;
@@ -67,61 +69,16 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-.container {
-    width: auto;
-    max-width: 1600px;
-    padding-top: 0px;
-    padding-right: 15px;
-    padding-bottom: 0px;
-    padding-left: 15px;
-}
-/*
-.contour {
-    fill: #7b858e;
-}
-
-g:active .intern {
-	fill: #d9e6ed;
-}*/
-
-
-
-
-
-.contour {
-	fill: #7b858e;
-}
-
 .intern {
-	fill:#d9e6ed;
+	fill:#fff;
 }
 
-g:active .contour, .disable-contour {
-	fill: #00669b;
+.intern:active {
+	fill: #006699;
 }
 
-g:active .intern {
-	fill: #d9e6ed;
-}
-
-.disable-intern {
-    fill: #015988;
-}
-
-@media screen and (min-width:1200px) {
-	.contour {
-		transition: fill ease-out 300ms;
-	}
-
-	g:hover .contour {
-		fill: #00669b;
-	}
-
-	.intern {
-		transition: fill ease-out 300ms;
-	}
-
-	g:hover .intern {
-		fill: #fff;
+@media screen and (min-width:992px) {
+	.intern:hover {
+		fill: #006699;
 	}
 }
