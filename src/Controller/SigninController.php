@@ -13,13 +13,8 @@ class SigninController extends AbstractController
      */
     public function index(): Response
     {
-        return new Response(
-            <<<'EOF'
-        <h1>Formulaire de connexion</h1>
-EOF
-        );
-        /*return $this->render('signin.html.twig', [
+        return $this->render('signin.html.twig', [
             'controller_name' => 'SigninController',
-        ]);*/
+        ]);
     }
 }

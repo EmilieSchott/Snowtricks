@@ -13,13 +13,8 @@ class IndexController extends AbstractController
      */
     public function index(): Response
     {
-        return new Response(
-            <<<'EOF'
-        <h1>Homepage</h1>
-EOF
-        );
-        /*return $this->render('index.html.twig', [
+        return $this->render('index.html.twig', [
             'controller_name' => 'IndexController',
-        ]);*/
+        ]);
     }
 }

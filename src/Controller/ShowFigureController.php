@@ -13,13 +13,8 @@ class ShowFigureController extends AbstractController
      */
     public function index(): Response
     {
-        return new Response(
-            <<<'EOF'
-        <h1>Page de présentation d'une figure</h1>
-EOF
-        );
-        /*return $this->render('show_figure.html.twig', [
+        return $this->render('show_figure.html.twig', [
             'controller_name' => 'ShowFigureController',
-        ]);*/
+        ]);
     }
 }

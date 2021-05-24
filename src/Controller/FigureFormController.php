@@ -13,13 +13,8 @@ class FigureFormController extends AbstractController
      */
     public function index(): Response
     {
-        return new Response(
-            <<<'EOF'
-        <h1>Formulaire de modification d'une figure</h1>
-EOF
-        );
-        /*return $this->render('figure_form.html.twig', [
+        return $this->render('figure_form.html.twig', [
             'controller_name' => 'FigureFormController',
-        ]);*/
+        ]);
     }
 }
