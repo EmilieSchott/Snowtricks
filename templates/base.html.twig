@@ -2,18 +2,118 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {#<title>Snowtricks - {% block title %}{% endblock %}</title>#}
+        <title>Snowtricks - {{ block('title') }}</title>
+
+        <meta name="author" content="{{ block('author') }}">
+        <meta name="description" content="{{ block('description') }}"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" >
+
+        <meta itemprop="name" content="{{ block('title') }}">
+        <meta itemprop="description" content="{{ block('description') }}">
+        <meta itemprop="image" content="{{ block('image') }}">
+
+        <meta name="twitter:card" content="{{ block('description') }}">
+        <meta name="twitter:site" content="{{ block('author') }}">
+        <meta name="twitter:title" content="{{ block('title') }}">
+        <meta name="twitter:image" content="{{ block('image') }}">
+
+        <meta property="og:title" content="{{ block('title') }}"/>
+        <meta property="og:type" content="{{ block('type') }}"/> 
+        <meta property="og:url" content="{{ block('url') }}"/> 
+        <meta property="og:image" content="{{ block('image') }}"/>
+        <meta property="og:description" content="{{ block('description') }}"/>
+
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
-
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+            <link href="style.css" rel="stylesheet" >
+            <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tomorrow:ital,wght@1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet"> 
         {% endblock %}
     </head>
+
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            <nav class="navbar fixed-top main-menu">
+                <a class="navbar-brand" href="#">
+                    <img src="/images/site/logo.svg" width="180" alt="">
+                </a>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link {% if controller_name == 'IndexController' %}active{% endif %}" href="{{ path('homepage') }}#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('homepage') }}#tricks">Tricks</a>
+                    </li>
+                    {% if app.user.username is not defined %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if controller_name == 'SigninController' %}active{% endif %}" href="{{ path('signin') }}">Se connecter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">S'enregistrer</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link " href="#">Se déconnecter</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        
+            {% block body %}{% endblock %}
+    
+        <footer>
+            <span>Copyright &copy; Emilie Schott 2021 </span>
+        </footer>
+
+        <nav class="navbar fixed-bottom footer-menu">
+            <ul class="nav mx-auto">
+                 <li class="nav-item">
+                    <a class="nav-link" href="{{ path('homepage') }}#home">                   
+                      <svg xmlns="http://www.w3.org/2000/svg" width="35.688" height="30" viewBox="667.794 572.936 35.688 30">
+                            <path class="intern" d="M700.529 586.602l-13.873-12.641c-.283-.277-.79-.746-1.068-1.025-.241.234-.776.732-1.068 1.025l-13.874 12.641c-.486.445-2.459 2.326-2.798 2.754.817.016 3.208.006 3.869.006h2.212v12.666c0 .229-.004.697-.007.895.233 0 .644.01.917.014h7.605c.257 0 .674.002.908-.004.005-.221.002-.662.002-.904v-7.691h4.469v7.691c0 .223-.003.701.009.904.214 0 .624.004.899.004h7.605c.275 0 .678-.002.914 0l-.004-.908v-12.666h2.214c.661 0 3.263-.018 3.969-.018-.376-.411-2.31-2.195-2.9-2.743zM697.199 575.35h-6.108l7.019 6.381v-5.471l-.002-.906c-.19-.004-.664-.004-.909-.004z"/>
+                        </svg>   
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('homepage') }}#tricks">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="18.081" height="30" viewBox="427.057 637.539 18.081 30">
+                            <path class="intern" d="M427.126 637.539v30l8.972-8.407 8.971 8.407v-30z"/>
+                        </svg>
+                    </a>
+                </li>
+                {% if app.user.username is not defined %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('signin') }}">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="30.292" height="30" viewBox="312.568 305.984 30.292 30">
+                            <g class="intern">
+                                <path d="M324.706 318.776l-2.835-2.847s-2.932-.008-3.525-.004l.883.883 1.605 1.605H313.9c-.397 0-.964.006-1.243.006l.002 1.235c0 .322.011.971.011 1.242h8.164l-1.605 1.604c-.266.266-.686.704-.875.894.49.004 2.704.022 3.505.011 1.33-1.293 3.702-3.598 3.772-3.668-.131-.13-.808-.845-.925-.961z"/>
+                                <path d="M320.409 324.64l.009 7.41c0 .329.013.881.004 1.24.334.008.88.001 1.237.001h6.206v1.241l.002 1.451c.217-.025.857-.131 1.163-.175.082-.016.239-.042.319-.06l12.412-2.482c.339-.067.75-.144 1.009-.211 0-.333-.011-.76-.011-1.006v-24.824c0-.025.003-.042.002-.067-.001-.036.005-1.021.005-1.176l-1.248.001h-19.859l-1.241.002v1.239l.004 7.558c.273 0 .933-.005 1.236-.005l1.244-.001-.002-6.31h10.161l-4.312 1.293c-.25.075-.309.093-.893.235 0 .774.008.668.008.954v19.859h-4.965s-.014-5.936-.019-6.182c-.305-.004-.886-.003-1.235-.003-.376.003-1.045.016-1.236.018z"/>
+                            </g>
+                        </svg>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30.542" height="30" viewBox="303.208 305 30.542 30">
+                            <g class="intern">
+                                <path d="M332.75 317.792l-2.834-2.847s-2.932-.008-3.527-.004l.885.883 1.605 1.604h-6.934c-.397 0-.964.006-1.243.006l.002 1.235c0 .322.011.971.011 1.242h8.164l-1.605 1.604c-.266.266-.686.704-.875.894.49.004 2.703.021 3.504.011 1.33-1.293 3.703-3.598 3.773-3.668-.131-.129-.811-.845-.926-.96z"/>
+                                <path d="M324.406 323.641c-.35 0-.932-.002-1.236.003-.005.246-.019 6.182-.019 6.182h-4.965v-19.859c0-.286.008-.18.008-.955a13.4 13.4 0 01-.893-.234l-4.311-1.293h10.16l-.002 6.31 1.245.001c.303 0 .963.005 1.236.005l.004-7.558v-1.238l-1.242-.003h-19.859l-1.247-.001c0 .154.005 1.14.004 1.176-.001.025.002.042.002.066v24.824c0 .246-.01.672-.01 1.006.258.066.669.143 1.008.21l12.412 2.482c.081.018.238.044.319.06.307.045.946.15 1.163.176l.002-1.451v-1.241h6.206c.357 0 .904.007 1.238-.001-.01-.359.004-.912.004-1.24l.008-7.411c-.188-.003-.858-.016-1.235-.016z"/>
+                            </g>
+                        </svg>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        {% block javascripts %}
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        {% endblock %}
+
     </body>
 </html>
