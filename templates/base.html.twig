@@ -42,14 +42,14 @@
                 </a>
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link {% if controller_name == 'IndexController' %}active{% endif %}" href="{{ path('homepage') }}#home">Accueil</a>
+                        <a class="nav-link" href="{{ path('homepage') }}#home">Accueil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('homepage') }}#tricks">Tricks</a>
                     </li>
                     {% if app.user.username is not defined %}
                         <li class="nav-item">
-                            <a class="nav-link {% if controller_name == 'SigninController' %}active{% endif %}" href="{{ path('signin') }}">Se connecter</a>
+                            <a class="nav-link">Se connecter</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="#">S'enregistrer</a>

@@ -23,10 +23,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 20px;
 }
 
-.active {
-    color: #006699;
-}
-
 .nav-link:hover {
     color: #395f77;
 }
