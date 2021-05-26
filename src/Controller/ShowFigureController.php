@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ShowFigureController extends AbstractController
 {
     /**
-     * @Route("/show/figure", name="show_figure")
+     * @Route("/show/figure/{slug}", name="show_figure")
      */
-    public function index(): Response
+    public function show(): Response
     {
         return $this->render('show_figure.html.twig', [
             'controller_name' => 'ShowFigureController',
