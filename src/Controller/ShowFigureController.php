@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ShowFigureController extends AbstractController
 {
     /**
-     * @Route("/show/figure/{slug}", name="show_figure")
+     * @Route("/figure/{slug}", name="show_figure")
      */
     public function show(): Response
     {

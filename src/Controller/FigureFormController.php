@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FigureFormController extends AbstractController
 {
     /**
-     * @Route("/form/figure", name="create_figure")
+     * @Route("/figure/form", name="create_figure")
      */
     public function createFigure(): Response
     {
@@ -19,7 +19,7 @@ class FigureFormController extends AbstractController
     }
 
     /**
-     * @Route("/form/figure/{slug}", name="modify_figure")
+     * @Route("/figure/form/{slug}", name="modify_figure")
      */
     public function modifyFigure(): Response
     {
