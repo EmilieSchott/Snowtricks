@@ -59,10 +59,16 @@ class Figure
      */
     private $videos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="figure", orphanRemoval=true)
+     */
+    private $Comments;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->videos = new ArrayCollection();
+        $this->Comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -196,6 +202,36 @@ class Figure
             // set the owning side to null (unless already changed)
             if ($video->getFigure() === $this) {
                 $video->setFigure(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->Comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->Comments->contains($comment)) {
+            $this->Comments[] = $comment;
+            $comment->setFigure($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->Comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getFigure() === $this) {
+                $comment->setFigure(null);
             }
         }
 
