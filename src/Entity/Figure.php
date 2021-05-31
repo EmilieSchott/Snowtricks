@@ -6,6 +6,7 @@ use App\Repository\FigureRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FigureRepository::class)
@@ -20,22 +21,29 @@ class Figure
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, unique=true)
+     * @Assert\NotBlank(message = "Le nom de figure ne peut pas être vide.")
+     * @Assert\Length(
+     *     max = 45,
+     *     maxMessage = "Le nom d'utilisateur doit faire maximum {{ limit }} caractères."
+     * )
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, unique=true)
      */
     private $slug;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message = "La description ne peut pas être vide.")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank(message = "Le groupe de figure ne peut pas être vide.")
      */
     private $figureGroup;
 

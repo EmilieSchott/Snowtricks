@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
@@ -18,12 +19,26 @@ class Image
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=45)
+     * @ORM\Column(type="string", length=45, unique=true)
+     * @Assert\Image(
+     *     minWidth = 150,
+     *     maxWidth = 500,
+     *     minHeight = 150,
+     *     maxHeight = 500,
+     *     minWidthMessage = "La largeur minimale attendue est de {{ min_width }}px.",
+     *     maxWidthMessage = "La largeur maximmale attendue est de {{ max_width }}px.",
+     *     minHeightMessage = "La hauteur minimale attendue est de {{ min_height }}px.",
+     *     maxHeightMessage = "La hauteur maximale attendue est de {{ max_height }}px."
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=150)
+     * @Assert\Length(
+     *     max = 150,
+     *     maxMessage = "La description de l'image doit faire au maximum {{ limit }} caractères."
+     * )
      */
     private $alt;
 
