@@ -18,3 +18,5 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
+    AppBundle\DataFixtures\Provider\HashPasswordProvider: ~
+
