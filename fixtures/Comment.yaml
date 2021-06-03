@@ -1,0 +1,6 @@
+App\Entity\Comment:
+    comment1:
+      createdAt:
+      message:
+      figure:
+      user:
