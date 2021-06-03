@@ -1,0 +1,252 @@
+App\Entity\Figure:
+    figure (template):
+        createdAt: <dateTimeBetween('-2 years','-1 year', null)>
+        updatedAt: 85%? <dateTimeBetween('-2 years', 'now', null)>
+
+    figure1 (extends figure):
+        name: Le Backside 180
+        slug: le-backside-180
+        description: 
+          "Pour les néophytes, le backside 180 ou 180 back est un saut avec un demi tour qui s'effectue côté pointes de pieds en envoyant les épaules dos à la pente lors
+          de la rotation, ce qui fait qu'à l’atterrissage on se retrouve en marche arrière. Comme dans toute rotation l’important est la synchronisation entre l’impulsion et la rotation des épaules.\n
+          \n
+          Le Backside 180 peut s’expliquer en plusieurs phases :\n
+          \n
+          1 - La phase d’approche consiste à avoir sa planche la plus à plat possible ou légèrement sur la carre frontside ; le regard est pointé vers le spot (l’endroit où on veut décoller). Les jambes sont fléchies, prêtes à donner une impulsion.\n
+          \n
+          2 - L’impulsion : on a le choix entre un ollie façon skate (comme on peut le voir dans notre tuto sur le Ollie) et une impulsion franche à deux pieds. L’impulsion à deux pieds conviendra mieux sur un kicker de park alors qu’un ollie plus skate et un peu sur la carre est plus évident en bord de piste. Donc on envoie une impulsion  en enclenchant très doucement les épaules de 30°. \n
+          \n
+          3 - Engager la rotation à l’aveugle, de dos… pas de panique, l’astuce est de regarder votre pied arrière pour voir défiler le sol en dessous et permettre au corps de faire un 180° progressif. Attendez de voir la réception pour ajuster la board  tout en gardant les épaules dans l’axe de la planche ou légèrement en retard pour bien arrêter la rotation.\n
+          \n
+          4 - En réception : bien amortir sur les jambes, continuer de regarder entre les pieds pour garder l’équilibre. Ce n’est qu’une fois que l'on a bien amorti qu'on pourra relever la tête et regarder ou l'on va…\n
+          \n
+          Avant d’essayer un 180 back, le mieux est d'essayer de bien rider en switch pour que ce ne soit pas trop la panique à l’atterrissage et de bien repérer le terrain et les autres rideurs pour ne pas provoquer de collisions.\n
+          \n
+          À vous de jouer ! Comme d’habitude, allez y progressivement, amusez vous  et prenez beaucoup de plaisir pour faire des backside 180, qui est à notre avis un de plus beaux tricks du snowboard…\n
+          \n
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-backside-180-snowboard"
+        figureGroup: Rotation
+        images: []
+        videos: ['@video1']
+        comments: []
+
+    figure2 (extends figure):
+        name: Le Frontside Boardslide
+        slug: le-frontside-boardslide
+        description:
+          "Un slide est dit «board slide » lorsque le rider slide littéralement sur la board. Cela est simple à comprendre lorsque l’on connait le slide 50-50. En skateboard, le 50-50 signifie 50% sur le trucks arrière et 50% sur le trucks avant. Il en est de même en snowboard malgré l’absence de trucks.\n
+          Le board slide est alors un slide sur le milieu de la board. Cela impose d’avoir la board à 90° par rapport au module (rail ou boxe), tout comme cela serait en skateboard.\n
+          \n
+          Le board slide est front side si le rider se présente face au rail ou à la boxe.\n
+          \n  
+          Les prérequis :\n
+          avant d’essayer de faire un boardslide, il est important de comprendre quels sont les mouvements clés, tel que la position de préparation, la contre rotation ou encore la  co-rotation. Le shifty air, le nose slide ou le speed check sont des tricks à apprendre en premier lieu.\n
+          \n
+          Apprendre à faire un boardslide :\n
+          \n
+          Il est important de respecter une progression allant du simple au compliqué, ainsi, n’hésitez pas à commencer l’entrainement à l’arrêt et sur du plat. Comme vous pouvez le voir dans les tutoriels de Nomad Snowboard, le boardslide, le shifty ou le slide s’apprennent en commençant sur du plat.\n
+          \n
+          Une fois les mouvements compris, il est temps de passer au concret en commençant toujours par le module le plus facile. Les snowparks offrent souvent des boxes de type « dance floor » pour les débutants et cela est parfait pour un backside boardslide ou un frontside boardslide. Entrainez-vous à sortir en normal en utilisant la contre rotation et ensuite à sortir en switch grâce à la co-rotation.\n
+          \n
+          Une fois que vous êtes à l’aise sur une boxe, vous pouvez tester sur de nouveaux modules et même sur vos premiers rails !
+          
+          Source : https://nomadsnowboard.com/comment-faire-un-board-slide-en-snowboard/"
+        figureGroup: Slide
+        images: []
+        videos: ['@video2']
+        comments: []
+
+    figure3 (extends figure):
+        name: Le Switch Back 540
+        slug: le-switch-back-540
+        description:
+          "Alors, comment ça marche le Switch BS 540 ?\n
+          \n
+          1 - Avant tout, il faut bien maitriser le fait de rider en switch avec aisance ainsi que le switch 180 back pour l’arrivé sur le kick et les 360 front pour la fin de la rotation et le replaquage.\n
+          \n
+          2 - La phase d’approche consiste à arriver bien fléchi sur le kicker, la planche bien à plat, les épaules dans l’axe de la board, le regard fixé sur le bout du kicker.\n
+          \n
+          3 - L’impulsion se fait à 2 pieds au bout du kicker, en lançant la rotation avec les épaules. Ne pas pousser trop fort aux premiers essais au risque d’être déséquilibré. La vitesse à laquelle il faut lancer les épaules pour lancer la rotation dépend de la taille du saut évidement… Le mieux est de commencer par un saut d’environ 5m, sa suffit pour tourner ce tricks.\n
+          \n
+          4 - Pour que la rotation se fasse à plat, il faut lancer le mouvement avec  les épaules à l’horizontale. Le regard se porte par dessus l’épaule, le menton au niveau de l’épaule. Pour désaxer, c’est la tête qui va chercher à twister le mouvement, et les épaules ne seront plus à l’horizontale.\n
+          \n
+          5 - Dès que l’on est en l’air, se regrouper et grabber. On vous conseille le Melon Grab pour commencer, c’est le plus simple avec cette rotation.\n
+          \n
+          6 - Il faut aller chercher la rotation du regard par dessus l’épaule avant. On aperçoit la reception après 270° et a partir de ce moment là c’est tout comme la fin d'un bon vieux 360 front. Il faut donc fixer des yeux la réception et ne pas la lâcher. Le mouvement est fini avec la tête tandis qu’il continue avec les épaules et le bas du corps restés en retard pour aller s’aligner vers la réception.\n
+          \n
+          7 - Pour atterrir, il faut ramener le bas du corps dans l’axe de la réception en se regroupant si on a besoin d’accélérer le mouvement. On détend ses jambes pour aller chercher la réception puis amortir sur les deux jambes au contact du sol. Les épaules doivent être dans l’axe de la board ou légèrement en retard pour arrêter la rotation, surtout si on sent que l’on tournait trop vite, ça évite la sur-rotation. Regardez devant vous une fois que vous avez fini d’amortir.\n
+          \n
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-switch-back-5-4-snowboard"
+        figureGroup: Rotation
+        images: []
+        videos: ['@video3']
+        comments: []
+
+    figure4 (extends figure):
+        name: Le Backflip
+        slug: le-backflip
+        description: 
+          "Le fameux Backflip, un trick très fun et facile à maitriser que l’on peut placer à beaucoup d’endroits.\n
+          \n
+          On peut aussi l’appeler rodéo back 3.6 si on le tourne un peu sur le côté, mais c’est le même mouvement.\n
+          \n
+          1- Le mieux c’est de s’entrainer à le faire sur un trampoline car le mouvement est le même.\n
+          \n
+          2- Choisissez un kicker de bord de piste, qui kicke un peu de préférence, pour vous aider à envoyer facilement.\n
+          \n
+          3- Arrivez bien fléchi en appui sur les 2 jambes et fixez le bout du kicker. L’impulsion se fait à 2 pieds au bout du kicker et pas avant : si on envoie trop tôt on risque de taper la tête dans le kicker ou de trop tourner, de faire un tour et demi et de tomber sur la tête. Deux situations à éviter...\n
+          \n
+          4- Donc impulsion à deux pieds, et on envoie la tête en arrière pour chercher le mouvement. Dès que l’on a décollé il faut remonter les genoux pour enrouler le mouvement. Les profs de gym ont tendance à dire que l’on envoie le mouvement avec le bassin, ce qui n’est pas faux mais c’est surtout quand on a compris le mouvement et que l’on est à l’aise avec.\n
+          \n
+          5- Donc regrouper les jambes en les montant. A ce moment on peut aussi penser à grabber mais ce n’est pas obligé pour commencer... On continue d’emmener la rotation avec la tête en arrière.\n
+          \n
+          6- Très vite on peut voir la réception et on va pouvoir gérer la fin de al rotation soit en se tendant un peu pour la ralentir, soit en se regroupant encore davantage pour tourner plus vite.\n
+          \n
+          7- Replacez bien la board sous votre corps avant d’atterrir, et amortir en pliant les jambes\n
+          \n
+          Amusez vous bien avec ce tricks, et attention : plus le kicker est gros plus il faut envoyer le mouvement doucement...\n
+          \n
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-backflip-snowboard"
+        figureGroup: Flip
+        images: []
+        videos: ['@video4']
+        comments: []
+
+    figure5 (extends figure):
+        name: Le Method
+        slug: le-method
+        description:
+          "Voilà un grab qui rend vraiment classe lorsque vous le placez. C'est un trick que de nombreux professionnels renommés considèrent comme leur préféré et chacun y apporte son propre style. Pensez aux grands qui font ce trick à merveille: Jamie Lynn, Terje, Peter Line… La méthode est difficile à faire correctement car il ne s'agit pas simplement de saisir la main avant sur le bord du talon (ce serait un melon). il s’agit de remonter votre planche et de cambrer le dos. Vous devrez travailler pour celui-ci, mais cela en vaut la peine.\n
+          \n
+          1. La préparation\n
+          \n
+          Dirigez-vous vers le module de votre choix, de préférence, un saut sur lequel vous êtes déjà à l'aise. Il faut que vous exerciez une légère pression sur vos talons.\n
+          \n
+          2. L'impulsion\n
+          \n
+          Regardez le bord du module et au moment où vous décollez, donnez une impulsion au tail de votre planche - peut-être un peu plus fort que la normale. Commencer à plier votre jambe arrière dès que vous montez dans les airs.\n
+          \n
+          3. Faire le grab\n
+          \n
+          Regarder vers l'endroit de votre atterrissage. Tendez votre main avant vers le bord de votre talon. N'oubliez pas de plier les genoux lorsque votre main se place pour trouver le bord. Pensez à ramner votre main arrière vers l'avant et à votre torse qui doit se tordre dans la direction opposée à vos jambes. Poussez vers l'avant avec votre épaule arrière pour contrer cette rotation et vous garder droit.\n
+          \n
+          4. Amplifiez-le\n
+          \n
+          Pour l'amplifiez davantage, tordez vraiment votre corps et pensez à mettre votre planche derrière vous. Donnez un coup de pied vers l'arrière de votre planche avec le pied arrière et cambrez votre dos pendant que vous attrapez la planche. Envoyez vraiment le tail de la planche derrière vous et votre épaule arrière vers devant, dans la direction de votre déplacement.\n
+          \n
+          5. L'atterrissage\n
+          \n
+          Vos yeux devraient presque toujours regarder vers l'atterissage. Relâchez le grab. Remettez à nouveau vos hanches et vos épaules droites. Utilisez vos épaules et centrez-vous pour atterrir en équilibre sur votre planche. Atterrir un peu trop sur les talons lourd est courant avec ce trick, alors ne vous sentez pas découragé·e si vous constatez que cela se produit.\n
+          \n
+          Source : https://whitelines.com/snowboarding-advice/trick-tips/kicker/how-to-do-a-method-grab-with-nate-kern.html"
+        figureGroup: Grab
+        images: []
+        videos: ['@video5']
+        comments: []
+
+    figure6 (extends figure):
+        name: Le Frontside 360
+        slug: le-frontside-360
+        description:
+          "Le 3.6 front ou frontside 3 est un tricks intéressant car on peut y mettre facilement beaucoup de style. C’est une rotation de 360 degrés du côté frontside ( à gauche pour les regular et à droite pour les goofy). Comme le 3.6 back, la vitesse de rotation est assez facile à gérer, mais si l’impulsion parait plus évidente en lançant les épaules de face, l’atterrissage l'est beaucoup moins car on est de dos le dernier quart du saut. On appelle ça une reception blind side…\n
+          \n
+          Comment ça marche le frontside 360 ?\n
+          \n
+          1 - La phase d’approche est similaire à tous les sauts : on arrive les jambes bien fléchies, les épaules dans l’axe de la board, le regard pointé vers le bout du kicker.\n
+          \n
+          2 - L’impulsion peut se faire autant à 2 pieds qu’en ollie façon skate. Les petits 3.6 de bord de piste se font quasi obligatoirement en ollie tandis qu'on aura tendance à plus pousser avec les deux pieds sur un kicker de park. Impulsion donc, en lançant la rotation avec la tête et les épaules vers l’avant de la board. Le menton au niveau de l'épaule, le regard juste par dessus l’épaule. Lancer les épaules plus ou moins fort en fonction de la taille du saut.\n
+          \n
+          3 - Dès que l'on décolle, on regroupe les jambes. On peut garder les bras ouvert pour contrôler la vitesse de rotation ou grabber si on est plus à l’aise avec le tricks. On peut aussi tweaker pour mettre du style ou ralentir la rotation. Pour l’accélérer de nouveau, il suffit de lâcher le grab et se regrouper. \n
+          \n
+          4 - On doit apercevoir la réception par dessus son épaule après le premier demi tour. Quand on voit l’endroit ou on pense atterri passer sous l'épaule puis sous la board, il vous faut se regrouper, les épaules dans l’axe de la board et le tout dans l’axe de la réception.\n
+          \n
+          5 - Replaquer en regardant bien ses pieds pour être sûr que la rotation s’arrête. Le défaut le plus commun est de regarder devant au moment ou on atterrit, du coup sans en avoir conscience les  épaules ont fait quelques degrés de plus et ça déséquilibre  le landing... Donc réceptionner bien en appui sur les deux pieds, en regardant ses pieds, et ne relever la tête qu’une fois que l'on a bien amorti. \n
+          \n
+          Le 3.6 front se fait aussi en switch, c’est alors un cab 3.6. Les deux versions sont toutes les deux très faciles en bord de piste sur des petits sauts. On peut se lancer en 3.6 front sur de plus gros kickers dès que l'on a bien le mouvement et qu'on se sent à l’aise en l’air avec ses repères. Essayer ensuite en switch quand on sait déjà très bien rider en switch… L'important est comme toujours de bien repérer le spot avant de se lancer.  \n 
+          \n
+          Amusez vous bien en faisant des 360 frontside avec tous les grabs légaux possibles, ou ceux de votre invention, mais attention, la police du style veille !\n
+          \n
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-frontside-360-snowboard"
+        figureGroup: Rotation
+        images: []
+        videos: ['@video6']
+        comments: []
+
+    figure7 (extends figure):
+        name: L'Indy
+        slug: l-indy
+        description:
+          "Les grabs sont la base des figures freestyle en Snowboard. C’est le mouvement d’aller attraper son snowboard avec une ou deux mains. Ce sont des figures que l’on peut exécuter seules ou en combinaison avec des rotations.\n
+          \n
+          Le grab, comment ça marche?\n
+          Il faut d'abord faire un saut, un simple ollie par exemple comme on peut le voir sur le tuto du ollie. Bien plier les jambes une fois en l’air pour se regrouper, et aller chercher la planche avec la main. Attention il ne faut pas que le buste se casse en deux pour aller chercher la board : ce sont bien les genoux qui remontent pour amener la board vers la main.\n
+          \n
+          Pour l'Indy : Sur un saut droit, la main arrière vient graber la carre frontside entre les pieds.\n
+          \n
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-grabs-snowboard"          
+        figureGroup: Grab
+        images: []
+        videos: ['@video7', '@video8', '@video9']
+        comments: []
+
+    figure8 (extends figure):
+        name: Le Mute
+        slug: le-mute
+        description:
+          "Les grabs sont la base des figures freestyle en Snowboard. C’est le mouvement d’aller attraper son snowboard avec une ou deux mains. Ce sont des figures que l’on peut exécuter seules ou en combinaison avec des rotations.\n
+          \n
+          Le grab, comment ça marche?\n
+          Il faut d'abord faire un saut, un simple ollie par exemple comme on peut le voir sur le tuto du ollie. Bien plier les jambes une fois en l’air pour se regrouper, et aller chercher la planche avec la main. Attention il ne faut pas que le buste se casse en deux pour aller chercher la board : ce sont bien les genoux qui remontent pour amener la board vers la main.\n
+          \n      
+          Pour le Mute, la main avant grabbe la carre frontside entre les pieds.\n
+          \n
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-grabs-snowboard"  
+        figureGroup: Grab
+        images: []
+        videos: ['@video10', '@video11', '@video12']
+        comments: []
+
+    figure9 (extends figure):
+        name: Le Switch Backside 540
+        slug: le-switch-backside-540
+        description:
+          "Alors, comment ça marche le Switch BS 540 ?\n
+          1 - Avant tout, il faut bien maitriser le fait de rider en switch avec aisance ainsi que le switch 180 back pour l’arrivé sur le kick et les 360 front pour la fin de la rotation et le replaquage.\n
+          \n
+          2 - La phase d’approche consiste à arriver bien fléchi sur le kicker, la planche bien à plat, les épaules dans l’axe de la board, le regard fixé sur le bout du kicker.\n
+          \n
+          3 - L’impulsion se fait à 2 pieds au bout du kicker, en lançant la rotation avec les épaules. Ne pas pousser trop fort aux premiers essais au risque d’être déséquilibré. La vitesse à laquelle il faut lancer les épaules pour lancer la rotation dépend de la taille du saut évidement… Le mieux est de commencer par un saut d’environ 5m, sa suffit pour tourner ce tricks.\n
+          \n
+          4 - Pour que la rotation se fasse à plat, il faut lancer le mouvement avec  les épaules à l’horizontale. Le regard se porte par dessus l’épaule, le menton au niveau de l’épaule. Pour désaxer, c’est la tête qui va chercher à twister le mouvement, et les épaules ne seront plus à l’horizontale.\n
+          \n
+          5 - Dès que l’on est en l’air, se regrouper et grabber. On vous conseille le Melon Grab pour commencer, c’est le plus simple avec cette rotation.\n
+          \n
+          6 - Il faut aller chercher la rotation du regard par dessus l’épaule avant. On aperçoit la reception après 270° et a partir de ce moment là c’est tout comme la fin d'un bon vieux 360 front. Il faut donc fixer des yeux la réception et ne pas la lâcher. Le mouvement est fini avec la tête tandis qu’il continue avec les épaules et le bas du corps restés en retard pour aller s’aligner vers la réception.\n
+          \n
+          7 - Pour atterrir, il faut ramener le bas du corps dans l’axe de la réception en se regroupant si on a besoin d’accélérer le mouvement. On détend ses jambes pour aller chercher la réception puis amortir sur les deux jambes au contact du sol. Les épaules doivent être dans l’axe de la board ou légèrement en retard pour arrêter la rotation, surtout si on sent que l’on tournait trop vite, ça évite la sur-rotation. Regardez devant vous une fois que vous avez fini d’amortir.\n
+          \n
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-switch-back-5-4-snowboard"
+        figureGroup: Rotation
+        images: []
+        videos: ['@video13']
+        comments: []
+
+    figure10 (extends figure):
+        name: Le Stalefish
+        slug: le-stalefish
+        description:
+          "Les grabs sont la base des figures freestyle en Snowboard. C’est le mouvement d’aller attraper son snowboard avec une ou deux mains. Ce sont des figures que l’on peut exécuter seules ou en combinaison avec des rotations.\n
+          \n
+          Le grab, comment ça marche?\n
+          Il faut d'abord faire un saut, un simple ollie par exemple comme on peut le voir sur le tuto du ollie. Bien plier les jambes une fois en l’air pour se regrouper, et aller chercher la planche avec la main. Attention il ne faut pas que le buste se casse en deux pour aller chercher la board : ce sont bien les genoux qui remontent pour amener la board vers la main.\n
+          \n
+          Pour le Stalefish, la main arrière grabbe la carre backside entre les talons.\n
+          \n
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-grabs-snowboard"  
+        figureGroup: Grab
+        images: []
+        videos: ['@video14', '@video15', '@video16']
+        comments: []
+
+
+
