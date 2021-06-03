@@ -5,6 +5,9 @@ services:
     _defaults:
         autowire: true      
         autoconfigure: true 
+        bind:
+          $userPhotoDir: "%kernel.project_dir%/public/images/uploads/users"
+          $figurePhotoDir: "%kernel.project_dir%/public/images/uploads/figures"
 
     App\:
         resource: '../src/'
@@ -18,5 +21,7 @@ services:
         resource: '../src/Controller/'
         tags: ['controller.service_arguments']
 
-    AppBundle\DataFixtures\Provider\HashPasswordProvider: ~
+    AppBundle\DataFixtures\Provider\HashPasswordProvider:
+        tags: [ { name: nelmio_alice.faker.provider } ]
+    
 
