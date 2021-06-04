@@ -23,12 +23,12 @@ class Image
      * @Assert\Image(
      *     minWidth = 600,
      *     maxWidth = 2000,
-     *     minHeight = 600,
-     *     maxHeight = 2000,
      *     minWidthMessage = "La largeur minimale attendue est de {{ min_width }}px.",
      *     maxWidthMessage = "La largeur maximmale attendue est de {{ max_width }}px.",
-     *     minHeightMessage = "La hauteur minimale attendue est de {{ min_height }}px.",
-     *     maxHeightMessage = "La hauteur maximale attendue est de {{ max_height }}px."
+     *     allowPortrait = false,
+     *     allowPortraitMessage = "Les images au format portrait ne sont pas autorisées."
+     *     allowSquare = false,
+     *     allowSquareMessage = "Les images carrées ne sont pas autorisées."
      * )
      */
     private $name;
