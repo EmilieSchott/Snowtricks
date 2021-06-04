@@ -26,7 +26,7 @@ class Image
      *     minWidthMessage = "La largeur minimale attendue est de {{ min_width }}px.",
      *     maxWidthMessage = "La largeur maximmale attendue est de {{ max_width }}px.",
      *     allowPortrait = false,
-     *     allowPortraitMessage = "Les images au format portrait ne sont pas autorisées."
+     *     allowPortraitMessage = "Les images au format portrait ne sont pas autorisées.",
      *     allowSquare = false,
      *     allowSquareMessage = "Les images carrées ne sont pas autorisées."
      * )
