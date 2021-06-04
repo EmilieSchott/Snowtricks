@@ -19,6 +19,19 @@ class FigureRepository extends ServiceEntityRepository
         parent::__construct($registry, Figure::class);
     }
 
+    public function findAllJoinedToImage(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT f, i
+            FROM App\Entity\Figure f
+            INNER JOIN f.images i'
+        );
+
+        return $query->getArrayResult();
+    }
+
     // /**
     //  * @return Figure[] Returns an array of Figure objects
     //  */
@@ -34,7 +47,7 @@ class FigureRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+     */
 
     /*
     public function findOneBySomeField($value): ?Figure
@@ -46,5 +59,5 @@ class FigureRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+     */
 }
