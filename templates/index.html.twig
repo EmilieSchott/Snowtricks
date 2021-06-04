@@ -32,31 +32,33 @@
     <section class="mx-auto" id="tricks">
         <div class="section-heading d-flex justify-content-start">
             <h3 class=" my-auto pr-5">Tricks</h3>
-            <a class="btn button" href="#" role="button">Crééer</a>
+            <a class="btn button" href="{{ path('create_figure') }}" role="button">Crééer</a>
         </div>
         <div class="section-content">
-            <div class="card col-2">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body d-flex align-items-start justify-content-between flex-wrap">
-                    <h5 class="card-heading">
-                        <a href="#">
-                            Nom figure
-                        </a>
-                    </h5>
-                    <div class="card-icon">
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30.188" height="30.25" viewBox="240.813 240.875 30.188 30.25">
-                                <path class="crud-icon" d="M240.944 269.879c-.088.305 0 .64.223.863a.894.894 0 00.623.258.846.846 0 00.241-.035l8.207-2.343-6.951-6.951-2.343 8.208zM270.139 245.503l-3.728-3.728a2.638 2.638 0 00-1.873-.775c-.704 0-1.367.276-1.866.769l-1.867 1.867 7.462 7.462 1.867-1.867a2.62 2.62 0 00.769-1.867 2.6 2.6 0 00-.764-1.861zM244.277 260.169l15.289-15.289 7.464 7.464-15.289 15.289-7.464-7.464z"/>
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24.625" height="30.188" viewBox="243.625 240.938 24.625 30.188">
-                                <path class="crud-icon" d="M265.781 244.781h-5.156v-.938a2.813 2.813 0 00-2.813-2.813h-3.75a2.813 2.813 0 00-2.813 2.813v.938h-5.156a2.344 2.344 0 00-2.344 2.344V249c0 .518.42.938.938.938h22.5c.518 0 .938-.42.938-.938v-1.875a2.345 2.345 0 00-2.344-2.344zm-12.656-.937a.94.94 0 01.938-.938h3.75a.94.94 0 01.938.938v.938h-5.625v-.938zM245.53 251.813a.294.294 0 00-.293.307l.773 16.233a2.81 2.81 0 002.809 2.679h14.237a2.81 2.81 0 002.81-2.679l.773-16.233a.294.294 0 00-.293-.307H245.53zm14.158 2.343a.938.938 0 011.876 0v12.188a.938.938 0 01-1.876 0v-12.188zm-4.688 0a.937.937 0 111.876 0v12.188a.938.938 0 01-1.876 0v-12.188zm-4.687 0a.937.937 0 111.876 0v12.188a.937.937 0 11-1.876 0v-12.188z"/>
-                            </svg>
-                        </a>
+            {% for figure in figures %}
+                <div class="card col-2">
+                    <img src="{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
+                    <div class="card-body d-flex align-items-start justify-content-between flex-wrap">
+                        <h5 class="card-heading">
+                            <a href="{{ path('show_figure', { slug: figure.slug}) }}">
+                                {{ figure.name }}
+                            </a>
+                        </h5>
+                        <div class="card-icon">
+                            <a href="{{ path('modify_figure', { slug: figure.slug}) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30.188" height="30.25" viewBox="240.813 240.875 30.188 30.25">
+                                    <path class="crud-icon" d="M240.944 269.879c-.088.305 0 .64.223.863a.894.894 0 00.623.258.846.846 0 00.241-.035l8.207-2.343-6.951-6.951-2.343 8.208zM270.139 245.503l-3.728-3.728a2.638 2.638 0 00-1.873-.775c-.704 0-1.367.276-1.866.769l-1.867 1.867 7.462 7.462 1.867-1.867a2.62 2.62 0 00.769-1.867 2.6 2.6 0 00-.764-1.861zM244.277 260.169l15.289-15.289 7.464 7.464-15.289 15.289-7.464-7.464z"/>
+                                </svg>
+                            </a>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24.625" height="30.188" viewBox="243.625 240.938 24.625 30.188">
+                                    <path class="crud-icon" d="M265.781 244.781h-5.156v-.938a2.813 2.813 0 00-2.813-2.813h-3.75a2.813 2.813 0 00-2.813 2.813v.938h-5.156a2.344 2.344 0 00-2.344 2.344V249c0 .518.42.938.938.938h22.5c.518 0 .938-.42.938-.938v-1.875a2.345 2.345 0 00-2.344-2.344zm-12.656-.937a.94.94 0 01.938-.938h3.75a.94.94 0 01.938.938v.938h-5.625v-.938zM245.53 251.813a.294.294 0 00-.293.307l.773 16.233a2.81 2.81 0 002.809 2.679h14.237a2.81 2.81 0 002.81-2.679l.773-16.233a.294.294 0 00-.293-.307H245.53zm14.158 2.343a.938.938 0 011.876 0v12.188a.938.938 0 01-1.876 0v-12.188zm-4.688 0a.937.937 0 111.876 0v12.188a.938.938 0 01-1.876 0v-12.188zm-4.687 0a.937.937 0 111.876 0v12.188a.937.937 0 11-1.876 0v-12.188z"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 
