@@ -2,13 +2,13 @@ App\Entity\User:
     user1:
       username: Emilie
       roles: [ROLE_USER]
-      userPhoto: <image('public\images\uploads\users', 200, 200, sport, true, true, snowboarder, false)>
+      userPhoto: <userImage()>
       email: <email()>
       password: <hashPassword('test')>
 
     user{2..10}:
       username: <username()>
       roles: [ROLE_USER]
-      userPhoto: <image('public\images\uploads\users', 200, 200, sport, true, true, snowboarder, false)>
+      userPhoto: <userImage()>
       email: <email()>
       password: <hashPassword(<word()>)>

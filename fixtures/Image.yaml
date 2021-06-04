@@ -1,6 +1,6 @@
 App\Entity\Image:
     image{1..20}:
-      name: <image('public\images\uploads\figures', 1200, 800, sport, true, true, snowboard, false)>
+      name: <figureImage()>
       alt: snowboard image
       figure: '@figure*'
 
