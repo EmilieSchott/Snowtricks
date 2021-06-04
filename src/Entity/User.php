@@ -50,9 +50,9 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message = "La photo de l'utilisateur ne peut pas être vide.")
      * @Assert\Image(
-     *     minWidth = 100,
+     *     minWidth = 50,
      *     maxWidth = 200,
-     *     minHeight = 100,
+     *     minHeight = 50,
      *     maxHeight = 200,
      *     minWidthMessage = "La largeur minimale attendue est de {{ min_width }}px.",
      *     maxWidthMessage = "La largeur maximale attendue est de {{ max_width }}px.",

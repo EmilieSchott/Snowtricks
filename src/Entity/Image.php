@@ -21,10 +21,10 @@ class Image
     /**
      * @ORM\Column(type="string", length=45, unique=true)
      * @Assert\Image(
-     *     minWidth = 800,
-     *     maxWidth = 1200,
-     *     minHeight = 800,
-     *     maxHeight = 1200,
+     *     minWidth = 600,
+     *     maxWidth = 2000,
+     *     minHeight = 600,
+     *     maxHeight = 2000,
      *     minWidthMessage = "La largeur minimale attendue est de {{ min_width }}px.",
      *     maxWidthMessage = "La largeur maximmale attendue est de {{ max_width }}px.",
      *     minHeightMessage = "La hauteur minimale attendue est de {{ min_height }}px.",
