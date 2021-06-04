@@ -23,5 +23,8 @@ services:
 
     AppBundle\DataFixtures\Provider\HashPasswordProvider:
         tags: [ { name: nelmio_alice.faker.provider } ]
+
+    AppBundle\DataFixtures\Provider\ImageProvider:
+        tags: [ { name: nelmio_alice.faker.provider } ]
     
 
