@@ -6,8 +6,8 @@ App\Entity\Figure:
         comments: '<numberBetween(12, 15)>x @comment*'
 
     figure1 (extends figure):
-        name: Le Backside 180
-        slug: le-backside-180
+        name: Backside 180
+        slug: backside-180
         description: 
           "Pour les néophytes, le backside 180 ou 180 back est un saut avec un demi tour qui s'effectue côté pointes de pieds en envoyant les épaules dos à la pente lors
           de la rotation, ce qui fait qu'à l’atterrissage on se retrouve en marche arrière. Comme dans toute rotation l’important est la synchronisation entre l’impulsion et la rotation des épaules.\n
@@ -32,8 +32,8 @@ App\Entity\Figure:
 
 
     figure2 (extends figure):
-        name: Le Frontside Boardslide
-        slug: le-frontside-boardslide
+        name: Frontside Boardslide
+        slug: frontside-boardslide
         description:
           "Un slide est dit «board slide » lorsque le rider slide littéralement sur la board. Cela est simple à comprendre lorsque l’on connait le slide 50-50. En skateboard, le 50-50 signifie 50% sur le trucks arrière et 50% sur le trucks avant. Il en est de même en snowboard malgré l’absence de trucks.\n
           Le board slide est alors un slide sur le milieu de la board. Cela impose d’avoir la board à 90° par rapport au module (rail ou boxe), tout comme cela serait en skateboard.\n
@@ -56,32 +56,23 @@ App\Entity\Figure:
         videos: ['@video2']
 
     figure3 (extends figure):
-        name: Le Switch Back 540
-        slug: le-switch-back-540
+        name: Gorilla
+        slug: gorilla
         description:
-          "Alors, comment ça marche le Switch BS 540 ?\n
+          "Les grabs sont la base des figures freestyle en Snowboard. C’est le mouvement d’aller attraper son snowboard avec une ou deux mains. Ce sont des figures que l’on peut exécuter seules ou en combinaison avec des rotations.\n
           \n
-          1 - Avant tout, il faut bien maitriser le fait de rider en switch avec aisance ainsi que le switch 180 back pour l’arrivé sur le kick et les 360 front pour la fin de la rotation et le replaquage.\n
+          Le grab, comment ça marche?\n
+          Il faut d'abord faire un saut, un simple ollie par exemple comme on peut le voir sur le tuto du ollie. Bien plier les jambes une fois en l’air pour se regrouper, et aller chercher la planche avec la main. Attention il ne faut pas que le buste se casse en deux pour aller chercher la board : ce sont bien les genoux qui remontent pour amener la board vers la main.\n
           \n
-          2 - La phase d’approche consiste à arriver bien fléchi sur le kicker, la planche bien à plat, les épaules dans l’axe de la board, le regard fixé sur le bout du kicker.\n
+          Pour le gorilla : Les deux mains attrappent la planche côté orteils, entre les deux fixations.\n
           \n
-          3 - L’impulsion se fait à 2 pieds au bout du kicker, en lançant la rotation avec les épaules. Ne pas pousser trop fort aux premiers essais au risque d’être déséquilibré. La vitesse à laquelle il faut lancer les épaules pour lancer la rotation dépend de la taille du saut évidement… Le mieux est de commencer par un saut d’environ 5m, sa suffit pour tourner ce tricks.\n
-          \n
-          4 - Pour que la rotation se fasse à plat, il faut lancer le mouvement avec  les épaules à l’horizontale. Le regard se porte par dessus l’épaule, le menton au niveau de l’épaule. Pour désaxer, c’est la tête qui va chercher à twister le mouvement, et les épaules ne seront plus à l’horizontale.\n
-          \n
-          5 - Dès que l’on est en l’air, se regrouper et grabber. On vous conseille le Melon Grab pour commencer, c’est le plus simple avec cette rotation.\n
-          \n
-          6 - Il faut aller chercher la rotation du regard par dessus l’épaule avant. On aperçoit la reception après 270° et a partir de ce moment là c’est tout comme la fin d'un bon vieux 360 front. Il faut donc fixer des yeux la réception et ne pas la lâcher. Le mouvement est fini avec la tête tandis qu’il continue avec les épaules et le bas du corps restés en retard pour aller s’aligner vers la réception.\n
-          \n
-          7 - Pour atterrir, il faut ramener le bas du corps dans l’axe de la réception en se regroupant si on a besoin d’accélérer le mouvement. On détend ses jambes pour aller chercher la réception puis amortir sur les deux jambes au contact du sol. Les épaules doivent être dans l’axe de la board ou légèrement en retard pour arrêter la rotation, surtout si on sent que l’on tournait trop vite, ça évite la sur-rotation. Regardez devant vous une fois que vous avez fini d’amortir.\n
-          \n
-          Source : https://www.snowsurf.com/snow-tricks-comment-faire-switch-back-5-4-snowboard"
-        figureGroup: Rotation
+          Source : https://www.snowsurf.com/snow-tricks-comment-faire-grabs-snowboard"   
+        figureGroup: Grab
         videos: ['@video3']
 
     figure4 (extends figure):
-        name: Le Backflip
-        slug: le-backflip
+        name: Backflip
+        slug: backflip
         description: 
           "Le fameux Backflip, un trick très fun et facile à maitriser que l’on peut placer à beaucoup d’endroits.\n
           \n
@@ -108,8 +99,8 @@ App\Entity\Figure:
         videos: ['@video4']
 
     figure5 (extends figure):
-        name: Le Method
-        slug: le-method
+        name: Method
+        slug: method
         description:
           "Voilà un grab qui rend vraiment classe lorsque vous le placez. C'est un trick que de nombreux professionnels renommés considèrent comme leur préféré et chacun y apporte son propre style. Pensez aux grands qui font ce trick à merveille: Jamie Lynn, Terje, Peter Line… La méthode est difficile à faire correctement car il ne s'agit pas simplement de saisir la main avant sur le bord du talon (ce serait un melon). il s’agit de remonter votre planche et de cambrer le dos. Vous devrez travailler pour celui-ci, mais cela en vaut la peine.\n
           \n
@@ -138,8 +129,8 @@ App\Entity\Figure:
         videos: ['@video5']
 
     figure6 (extends figure):
-        name: Le Frontside 360
-        slug: le-frontside-360
+        name: Frontside 360
+        slug: frontside-360
         description:
           "Le 3.6 front ou frontside 3 est un tricks intéressant car on peut y mettre facilement beaucoup de style. C’est une rotation de 360 degrés du côté frontside ( à gauche pour les regular et à droite pour les goofy). Comme le 3.6 back, la vitesse de rotation est assez facile à gérer, mais si l’impulsion parait plus évidente en lançant les épaules de face, l’atterrissage l'est beaucoup moins car on est de dos le dernier quart du saut. On appelle ça une reception blind side…\n
           \n
@@ -164,8 +155,8 @@ App\Entity\Figure:
         videos: ['@video6']
 
     figure7 (extends figure):
-        name: L'Indy
-        slug: l-indy
+        name: Indy
+        slug: indy
         description:
           "Les grabs sont la base des figures freestyle en Snowboard. C’est le mouvement d’aller attraper son snowboard avec une ou deux mains. Ce sont des figures que l’on peut exécuter seules ou en combinaison avec des rotations.\n
           \n
@@ -179,8 +170,8 @@ App\Entity\Figure:
         videos: ['@video7', '@video8', '@video9']
 
     figure8 (extends figure):
-        name: Le Mute
-        slug: le-mute
+        name: Mute
+        slug: mute
         description:
           "Les grabs sont la base des figures freestyle en Snowboard. C’est le mouvement d’aller attraper son snowboard avec une ou deux mains. Ce sont des figures que l’on peut exécuter seules ou en combinaison avec des rotations.\n
           \n
@@ -194,8 +185,8 @@ App\Entity\Figure:
         videos: ['@video10', '@video11', '@video12']
 
     figure9 (extends figure):
-        name: Le Switch Backside 540
-        slug: le-switch-backside-540
+        name: Switch Backside 540
+        slug: switch-backside-540
         description:
           "Alors, comment ça marche le Switch BS 540 ?\n
           1 - Avant tout, il faut bien maitriser le fait de rider en switch avec aisance ainsi que le switch 180 back pour l’arrivé sur le kick et les 360 front pour la fin de la rotation et le replaquage.\n
@@ -217,8 +208,8 @@ App\Entity\Figure:
         videos: ['@video13']
 
     figure10 (extends figure):
-        name: Le Stalefish
-        slug: le-stalefish
+        name: Stalefish
+        slug: stalefish
         description:
           "Les grabs sont la base des figures freestyle en Snowboard. C’est le mouvement d’aller attraper son snowboard avec une ou deux mains. Ce sont des figures que l’on peut exécuter seules ou en combinaison avec des rotations.\n
           \n
