@@ -20,7 +20,15 @@ class FigureRepository extends ServiceEntityRepository
     }
 
     public function findAllJoinedToImage(): array
-    {
+    {/*
+        return $this->createQueryBuilder('f')
+            ->select('f')
+            ->innerjoin('Image', 'i', 'WITH', 'i.figure_id = f.id')
+            ->getQuery()
+            ->getArrayResult()
+            ;
+        */
+
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
