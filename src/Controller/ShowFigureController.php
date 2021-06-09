@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Figure;
+use App\Form\CommentFormType;
 use App\Repository\CommentRepository;
 use App\Repository\ImageRepository;
 use App\Repository\VideoRepository;
@@ -17,12 +19,14 @@ class ShowFigureController extends AbstractController
      */
     public function show(Figure $figure, ImageRepository $imageRepository, VideoRepository $videoRepository, CommentRepository $commentRepository): Response
     {
+        $comment = new Comment();
+        $form = $this->createForm(CommentFormType::class, $comment);
+
         return $this->render('show_figure.html.twig', [
                     'controller_name' => 'ShowFigureController',
                     'figure' => $figure,
-                    'images' => $imageRepository->findBy(['figure' => $figure]),
-                    'videos' => $videoRepository->findBy(['figure' => $figure]),
                     'comments' => $commentRepository->findBy(['figure' => $figure], ['createdAt' => 'DESC']),
+                    'comment_form' => $form->createView(),
                 ]);
     }
 }

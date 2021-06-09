@@ -16,17 +16,17 @@
                 <h2>Le {{ figure.name }}</h2>	
         </div> 
         <div class="container first-image ">  
-            <img src="{{ asset('/images/uploads/figures') }}/{{ images.0.name }}" class="card-img-top" alt="{{ images.0.alt }}">
+            <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
         </div>
         <div class="media d-flex mt-4 mb-2">
-            {% for image in images %}
+            {% for image in figure.images %}
                 <div class="media-element d-flex align-items-center">
                     <a href="{{ asset('/images/uploads/figures') }}/{{ image.name }}">
                         <img src="{{ asset('/images/uploads/figures') }}/{{ image.name }}" alt="{{ image.alt }}">
                     </a>
                 </div>
             {% endfor %}
-            {% for video in videos %}
+            {% for video in figure.videos %}
                 <div class="media-element d-flex align-items-center">
                     <iframe width="200" src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -48,6 +48,28 @@
             </div>
              {% endif %}
         </div>
+
+        {% if app.user.username is not defined %}
+            <div class="leave-comment col-8 d-flex justify-content-center">
+                    <div class="comment-form col-9">
+                        {{ form_start(comment_form, {
+                            'attr' : {
+                                'nonvalidate': 'nonvalidate',
+                                'class': 'col-12 d-flex flex-row justify-content-between align-items-end'
+                            }
+                        }) }}
+                        {{ form_row(comment_form.message, {
+                            'attr' : {
+                                'class': 'comment-field',
+                                'cols': '47',
+                                'rows': '1'
+                            }
+                        }) }}
+                        <button type="submit" class="col-4 btn btn-primary ">Laisser un commentaire</button>
+                        {{ form_end(comment_form)}}
+                    </div>
+            </div>
+        {% endif %}
 
         <div class="figure-comments col-6">
             {% for comment in comments %}
