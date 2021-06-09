@@ -34,7 +34,7 @@
             <h3 class=" my-auto pr-5">Tricks</h3>
             <a class="btn button" href="{{ path('create_figure') }}" role="button">Crééer</a>
         </div>
-        <div class="section-content col-12">
+        <div class="section-tricks col-12">
             {% for figure in figures %}
                 <div class="card col-2">
                     <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
