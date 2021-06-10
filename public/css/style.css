@@ -93,11 +93,12 @@ h1, h2, h3, h4, h5, h6 {
     color:white;
     margin-left:10px;
     margin-right:10px;
+    border-radius:0px;
 }
 
 .button:hover {
     background-color:rgba(13, 114, 156, 1);
-    color:#7eb0c5;
+    color:white;
 }
 
 .card-heading h4 {
