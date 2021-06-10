@@ -6,10 +6,16 @@ use App\Repository\FigureRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FigureRepository::class)
+ * @UniqueEntity(
+ *     fields={"name"},
+ *     message="Cette figure existe déjà sur le site."
+ * )
+ * @UniqueEntity("slug")
  */
 class Figure
 {
@@ -25,7 +31,7 @@ class Figure
      * @Assert\NotBlank(message = "Le nom de figure ne peut pas être vide.")
      * @Assert\Length(
      *     max = 45,
-     *     maxMessage = "Le nom d'utilisateur doit faire maximum {{ limit }} caractères."
+     *     maxMessage = "Le nom de la figure doit faire maximum {{ limit }} caractères."
      * )
      */
     private $name;
