@@ -26,5 +26,10 @@ services:
 
     AppBundle\DataFixtures\Provider\ImageProvider:
         tags: [ { name: nelmio_alice.faker.provider } ]
+
+    App\EntityListener\FigureEntityListener:
+      tags:
+        - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'App\Entity\Figure'}
+        - { name: 'doctrine.orm.entity_listener', event: 'preUpdate', entity: 'App\Entity\Figure'}
     
 
