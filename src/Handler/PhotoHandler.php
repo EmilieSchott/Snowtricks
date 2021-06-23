@@ -2,20 +2,27 @@
 
 namespace App\Handler;
 
-use App\Entity\Image;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class PhotoHandler
 {
-    public function handlePhoto(Image $image, $photoData, string $figurePhotoDir)
+    private $figurePhotoDir;
+
+    public function __construct(string $figurePhotoDir)
     {
-        $filename = bin2hex(\ramdom_bytes(6)) . '.' . $photoData->guessExtension();
+        $this->figurePhotoDir = $figurePhotoDir;
+    }
+
+    public function handlePhoto(object $photoFile): string
+    {
+        $filename = bin2hex(\openssl_random_pseudo_bytes(6)) . '.' . $photoFile->guessExtension();
 
         try {
-            $photoData->move($figurePhotoDir, $filename);
+            $photoFile->move($this->figurePhotoDir, $filename);
         } catch (FileException $e) {
             // unable to upload photo, give up.
         }
-        $image->setName($filename);
+
+        return $filename;
     }
 }
