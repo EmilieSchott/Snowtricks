@@ -18,16 +18,16 @@
         <div class="container first-image ">  
             <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
         </div>
-        <div class="media d-flex mt-4 mb-2">
+        <div class="media d-flex flex-wrap mt-4 mb-2">
             {% for image in figure.images %}
-                <div class="media-element d-flex align-items-center">
+                <div class="image-media-element d-flex align-items-center">
                     <a href="{{ asset('/images/uploads/figures') }}/{{ image.name }}">
                         <img src="{{ asset('/images/uploads/figures') }}/{{ image.name }}" alt="{{ image.alt }}">
                     </a>
                 </div>
             {% endfor %}
             {% for video in figure.videos %}
-                <div class="media-element d-flex align-items-center">
+                <div class="video-media-element d-flex align-items-center">
                     <iframe width="200" src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             {% endfor %}

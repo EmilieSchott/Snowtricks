@@ -105,12 +105,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0px;
 }
 
-.card-icon{
+.crud-icons-container {
     margin-left: 0px;
     margin-right: 0px;
 }
 
-.card-icon svg {
+.crud-icons-container svg {
     margin-left: 5px;
     margin-right: 5px;
 }
@@ -120,6 +120,34 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 10px;
     padding-right: 10px;
     margin-top:0px;
+}
+
+.crud-icon:hover {
+    fill:rgba(13, 114, 156);
+}
+
+
+.crud-icons-container-reverse {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: rgba(13, 114, 156, 0.8);
+}
+
+.crud-icons-container-reverse svg {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom:3px;
+}
+
+.crud-icon-reverse {
+    fill:white;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top:0px;
+}
+
+a:hover .crud-icon-reverse {
+    fill:rgba(13, 114, 156);
 }
 
 .down {
@@ -291,7 +319,7 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-.comment-datas {
+.comment-datas, .post-media {
     border-width: 2px;
     border-color: rgba(13, 114, 156, 0.8);
     border-style: groove;
@@ -301,11 +329,18 @@ h1, h2, h3, h4, h5, h6 {
     margin:5px;
 }
 
-.media-element {
+.image-media-element, 
+.video-media-element, 
+.video-media-element-button, 
+.image-media-element-button {
     margin: 3px;
+    max-width: 200px;
 }
 
-.media-element img {
+.image-media-element img, 
+.video-media-element img, 
+.video-media-element-button img, 
+.image-media-element-button img {
     max-width: 200px;
 }
 
@@ -356,3 +391,8 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom:15px;
     padding: 0px;
 }
+
+.add{
+    height:175px;
+}
+
