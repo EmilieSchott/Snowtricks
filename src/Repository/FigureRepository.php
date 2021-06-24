@@ -20,14 +20,7 @@ class FigureRepository extends ServiceEntityRepository
     }
 
     public function findAllJoinedToImage(): array
-    {/*
-        return $this->createQueryBuilder('f')
-            ->addSelect('i')
-            ->innerjoin('i.figure_id', 'i')
-            ->getQuery()
-            ->getArrayResult()
-            ;*/
-
+    {
         $entityManager = $this->getEntityManager();
 
         $query = $entityManager->createQuery(
@@ -38,33 +31,4 @@ class FigureRepository extends ServiceEntityRepository
 
         return $query->getArrayResult();
     }
-
-    // /**
-    //  * @return Figure[] Returns an array of Figure objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-     */
-
-    /*
-    public function findOneBySomeField($value): ?Figure
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-     */
 }
