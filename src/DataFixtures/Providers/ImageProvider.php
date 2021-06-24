@@ -23,7 +23,7 @@ class ImageProvider extends BaseProvider
     'user8',
     'user9',
     'user10',
-];
+    ];
 
     /**
      * @var array list figure images name
