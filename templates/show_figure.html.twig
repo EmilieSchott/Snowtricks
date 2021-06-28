@@ -7,19 +7,61 @@
 {% block url %} <!-- Site URL to complete : http://www.example.com/--> {% endblock %}
 {% block author %}Emilie Schott{% endblock %}
 
+{% block class %}class="presentation-body"{% endblock %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <section class="figure-presentation-page col-8 mx-auto d-flex flex-column align-items-center" >
+       <div class="figure-title col-8 col-md-6 mx-auto p-3 p-md-4 p-lg-5 text-center"> 
+                <h2>Le {{ figure.name }}</h2>	
+        </div> 
+        <div class="container first-image ">  
+            <img src="{{ asset('/images/uploads/figures') }}/{{ images.0.name }}" class="card-img-top" alt="{{ images.0.alt }}">
+        </div>
+        <div class="media d-flex mt-4 mb-2">
+            {% for image in images %}
+                <div class="media-element d-flex align-items-center">
+                    <a href="{{ asset('/images/uploads/figures') }}/{{ image.name }}">
+                        <img src="{{ asset('/images/uploads/figures') }}/{{ image.name }}" alt="{{ image.alt }}">
+                    </a>
+                </div>
+            {% endfor %}
+            {% for video in videos %}
+                <div class="media-element d-flex align-items-center">
+                    <iframe width="200" src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="figure-description col-10">
+            <p class="p-4 my-2" > {{ figure.description }} </p>
+        </div> 
+        <div class="figure-info d-flex mb-3">
+            <div class="figure-info-element badge">
+                Groupe : {{ figure.figureGroup }}
+            </div>
+            <div class="figure-info-element badge">
+                Créée le : {{ figure.createdAt|format_datetime('short', 'none', locale='fr') }}
+            </div>
+             {% if figure.updatedAt is not empty %}
+            <div class="figure-info-element badge">
+                Modifiée : {{ figure.updatedAt|format_datetime(locale='fr') }}
+            </div>
+             {% endif %}
+        </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/OPENCLASSROOMS/PARCOURS/Projet6/Snowtricks/src/Controller/ShowFigureController.php'|file_link(0) }}">src/Controller/ShowFigureController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/OPENCLASSROOMS/PARCOURS/Projet6/Snowtricks/templates/show_figure/index.html.twig'|file_link(0) }}">templates/show_figure/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <div class="figure-comments col-6">
+            {% for comment in comments %}
+                <div class="row comment">
+                    <div class="comment-userphoto col-2">
+                        <img src="{{ asset('/images/uploads/users') }}/{{ comment.user.userPhoto }}" alt="Avatar de {{ comment.user.username }}">
+                    </div>
+                    <div class="comment-datas col-10 p-2">
+                        <h4 class="comment-header">{{ comment.user.username }} <span class="date">le {{ comment.createdAt|format_datetime(locale='fr') }} </span></h4>
+                        <p class="comment-message">{{ comment.message }}</p>
+                    </div>  
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
 {% endblock %}

@@ -18,4 +18,16 @@ class CommentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Comment::class);
     }
+
+    public function findByJoinedToUser(Figure $figure): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.figure = :figure')
+            ->setParameter('figure', $figure)
+            ->innerJoin('c.user', 'u')
+            ->orderBy('c.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+    	;
+    }
 }
