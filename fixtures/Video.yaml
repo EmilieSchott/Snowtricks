@@ -1,0 +1,64 @@
+App\Entity\Video:
+    video1:
+      url: https://www.youtube.com/embed/Sj7CJH9YvAo
+      figure: '@figure1'
+
+    video2:
+      url: https://www.youtube.com/embed/12OHPNTeoRs
+      figure: '@figure2'
+
+    video3:
+      url: https://www.youtube.com/embed/wDoHk1Y6c-w
+      figure: '@figure3'
+
+    video4:
+      url: https://www.youtube.com/embed/SlhGVnFPTDE
+      figure: '@figure4'
+
+    video5:
+      url: https://www.youtube.com/embed/_hxLS2ErMiY
+      figure: '@figure5'
+
+    video6:
+      url: https://www.youtube.com/embed/9T5AWWDxYM4
+      figure: '@figure6'
+
+    video7:
+      url: https://www.youtube.com/embed/6yA3XqjTh_w
+      figure: '@figure7'
+
+    video8:
+      url: https://www.youtube.com/embed/51sQRIK-TEI
+      figure: '@figure7'
+
+    video9:
+      url: https://www.youtube.com/embed/wWmqtgDutls
+      figure: '@figure7'
+
+    video10:
+      url: https://www.youtube.com/embed/jm19nEvmZgM
+      figure: '@figure8'
+
+    video11:
+      url: https://www.youtube.com/embed/51sQRIK-TEI
+      figure: '@figure8'
+
+    video12:
+      url: https://www.youtube.com/embed/wWmqtgDutls
+      figure: '@figure8'
+
+    video13:
+      url: https://www.youtube.com/embed/wDoHk1Y6c-w
+      figure: '@figure9'
+
+    video14:
+      url: https://www.youtube.com/embed/f9FjhCt_w2U
+      figure: '@figure10'
+
+    video15:
+      url: https://www.youtube.com/embed/51sQRIK-TEI
+      figure: '@figure10'
+
+    video16:
+      url: https://www.youtube.com/embed/wWmqtgDutls
+      figure: '@figure10'

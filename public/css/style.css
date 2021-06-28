@@ -1,6 +1,7 @@
 body {
     font-family: Titillium Web;
     font-size: 16px;
+    color:#333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -24,9 +25,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-link:hover {
-    color: #395f77;
+    color: #7eb0c5;
 }
-
 
 @media (max-width: 991px) {
     .main-menu {
@@ -77,4 +77,170 @@ h1, h2, h3, h4, h5, h6 {
 	.intern:hover {
 		fill: #006699;
 	}
+}
+
+.frame {
+    fill:rgba(13, 114, 156, 0.8);
+}
+
+.arrow {
+    fill:#fff;
+}
+
+.button {
+    background-color:rgba(13, 114, 156, 0.8);
+    color:white;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.button:hover {
+    background-color:rgba(13, 114, 156, 1);
+    color:#7eb0c5;
+}
+
+.card-heading h4 {
+    margin-bottom: 0px;
+}
+
+.card-icon{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.card-icon svg {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.crud-icon {
+    fill:rgba(13, 114, 156, 0.8);
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top:0px;
+}
+
+.down {
+    position: absolute;
+    bottom : 20px;
+    right: 20px;
+}
+
+@media (max-width: 991px) {
+    .up {
+        visibility: hidden;
+    }
+}
+
+@media (min-width:992px) {
+    .up {
+        position: relative;
+        bottom : 20px;
+        right: 20px;
+    }
+}
+
+.container-fluid {
+    padding-left:0; 
+}
+
+.hero {
+	background:url("/images/site/main.jpg") no-repeat -50px 0px;
+	background-size: cover;
+	height:800px;
+}
+
+.moto
+{
+	background-color: rgba(13, 114, 156, 0.6);
+	height:250px;
+    color: white;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	animation: moto-translation cubic-bezier(.65,.95,.64,1.02) 2000ms backwards;
+    position: relative;
+    top:200px;
+}
+
+@media (min-width: 992px) {
+    .hero {
+	background:url("/images/site/main.jpg") no-repeat center;
+	background-size: cover;
+	height:1350px;
+    }
+
+    .moto {
+	background-color: rgba(13, 114, 156, 0.6);
+	height:250px;
+    color: white;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	animation: moto-translation cubic-bezier(.65,.95,.64,1.02) 2000ms backwards;
+    position: relative;
+    top:200px;
+    }
+}
+
+@keyframes moto-translation
+{
+	from 
+	{
+		transform: translateX(400%);
+	}
+	to
+	{
+		transform: translateX(0%);
+	}
+}
+
+#tricks {
+    max-width: 80%;
+    margin-bottom:25px;
+}
+
+.section-heading {
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+@media (min-width: 992px) {
+    .section-content {
+        display:flex;
+        justify-content: space-between; 
+        flex-wrap: wrap;
+    }
+
+    #tricks {
+        max-width: 90%;
+        padding-top:0px;
+    }
+
+    .section-heading {
+        margin-top:50px;
+        margin-bottom:50px;
+    }
+    
+}
+
+
+.card {
+   width: 18rem; 
+   margin-top:15px;
+   margin-bottom:15px;
+}
+
+.card-body {
+    height:75px;
+}
+
+.load {
+    margin-bottom:30px;
+}
+
+@media (min-width: 992px) {
+    .load {
+        margin-bottom:0px;
+    }
 }
