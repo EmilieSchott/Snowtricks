@@ -76,13 +76,13 @@ class Figure
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="figure", orphanRemoval=true)
      */
-    private $Comments;
+    private $comments;
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->videos = new ArrayCollection();
-        $this->Comments = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,13 +227,13 @@ class Figure
      */
     public function getComments(): Collection
     {
-        return $this->Comments;
+        return $this->comments;
     }
 
     public function addComment(Comment $comment): self
     {
-        if (!$this->Comments->contains($comment)) {
-            $this->Comments[] = $comment;
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
             $comment->setFigure($this);
         }
 
@@ -242,7 +242,7 @@ class Figure
 
     public function removeComment(Comment $comment): self
     {
-        if ($this->Comments->removeElement($comment)) {
+        if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
             if ($comment->getFigure() === $this) {
                 $comment->setFigure(null);
