@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} <!--Nom de la figure-->{% endblock %}
-{% block description %} Page de présentation d'une figure : <!--Nom de la figure-->{% endblock %}
-{% block image %}public/image.jpg{% endblock %}
-{% block type %} <!--Note if this page is an article or a website--> {% endblock %}
-{% block url %} <!-- Site URL to complete : http://www.example.com/--> {% endblock %}
+{% block title %} {{ figure.name }}{% endblock %}
+{% block description %} Page de présentation d'une figure : {{ figure.name }}{% endblock %}
+{% block image %} {{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }} {% endblock %}
+{% block type %} Article {% endblock %}
+{% block url %} {{ url('show_figure', { slug: figure.slug}) }} {% endblock %}
 
 
 {% block class %}class="presentation-body"{% endblock %}
@@ -16,7 +16,10 @@
                 <h2>Le {{ figure.name }}</h2>	
         </div> 
         <div class="container first-image ">  
-            <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
+            <a href="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}">
+                <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
+            </a>
+            
         </div>
         <div class="media d-flex flex-wrap mt-4 mb-2">
             {% for image in figure.images %}
@@ -50,7 +53,7 @@
         </div>
 
         {% if app.user.username is not defined %}
-            <div class="leave-comment col-8 d-flex justify-content-center">
+            <div class="leave-comment col-8 d-flex mb-4 justify-content-center">
                     <div class="comment-form col-9">
                         {{ form_start(comment_form, {
                             'attr' : {
