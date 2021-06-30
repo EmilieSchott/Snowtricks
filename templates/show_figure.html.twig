@@ -11,50 +11,81 @@
 
 {% block body %}
 
-    <section class="figure-presentation-page col-8 mx-auto d-flex flex-column align-items-center" >
+    <section class="figure-presentation-page col-11 col-sm-10 col-xl-8 mx-auto d-flex flex-column align-items-center" >
        <div class="figure-title col-8 col-md-6 mx-auto p-3 p-md-4 p-lg-5 text-center"> 
                 <h2>Le {{ figure.name }}</h2>	
         </div> 
-        <div class="container first-image ">  
-            <a href="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}">
+        <div class="first-image">  
                 <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
-            </a>
-            
         </div>
         <div class="media d-flex flex-wrap mt-4 mb-2">
             {% for image in figure.images %}
-                <div class="image-media-element d-flex align-items-center">
-                    <a href="{{ asset('/images/uploads/figures') }}/{{ image.name }}">
-                        <img src="{{ asset('/images/uploads/figures') }}/{{ image.name }}" alt="{{ image.alt }}">
+                <div class="media image-media-element d-flex align-items-center">
+                    <a class="media" href="{{ asset('/images/uploads/figures') }}/{{ image.name }}">
+                        <img class="media" src="{{ asset('/images/uploads/figures') }}/{{ image.name }}" alt="{{ image.alt }}">
                     </a>
                 </div>
             {% endfor %}
             {% for video in figure.videos %}
-                <div class="video-media-element d-flex align-items-center">
-                    <iframe width="200" src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="media video-media-element d-flex align-items-center">
+                    <iframe class="media" width="200" src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             {% endfor %}
         </div>
-        <div class="figure-description col-10">
+
+        <div class="media-phone-version my-0 py-0">
+            <button class="btn button media-phone-version" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalMedia">
+                Voir les médias
+            </button>
+            <div class="modal fade" id="ModalMedia" tabindex="-1" aria-labelledby="ModalMediaLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalMediaLabel">Médias</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {% for image in figure.images %}
+                                <div class="image-media-element mx-auto">
+                                    <a href="{{ asset('/images/uploads/figures') }}/{{ image.name }}">
+                                        <img src="{{ asset('/images/uploads/figures') }}/{{ image.name }}" alt="{{ image.alt }}">
+                                    </a>
+                                </div>
+                            {% endfor %}
+                            {% for video in figure.videos %}
+                                <div class="video-media-element  mx-auto">
+                                    <iframe width="200" src="{{ video.url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn button" data-bs-dismiss="modal">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <div class="figure-description col-12 col-md-10">
             <p class="p-4 my-2" > {{ figure.description }} </p>
         </div> 
-        <div class="figure-info d-flex mb-3">
-            <div class="figure-info-element badge">
+        <div class="figure-info col-12 d-flex justify-content-center align-items-stretch mb-3">
+            <div class="figure-info-element text-wrap col-3 badge">
                 Groupe : {{ figure.figureGroup }}
             </div>
-            <div class="figure-info-element badge">
+            <div class="figure-info-element text-wrap col-3 badge">
                 Créée le : {{ figure.createdAt|format_datetime('short', 'none', locale='fr') }}
             </div>
              {% if figure.updatedAt is not empty %}
-            <div class="figure-info-element badge">
-                Modifiée : {{ figure.updatedAt|format_datetime(locale='fr') }}
+            <div class="figure-info-element text-wrap col-3 badge">
+                Modifiée le : {{ figure.updatedAt|format_datetime(locale='fr') }}
             </div>
              {% endif %}
         </div>
 
         {% if app.user.username is not defined %}
-            <div class="leave-comment col-8 d-flex mb-4 justify-content-center">
-                    <div class="comment-form col-9">
+            <div class="leave-comment col-11 col-md-10 col-xl-8 d-flex mb-4 justify-content-center">
+                    <div class="comment-form col-11">
                         {{ form_start(comment_form, {
                             'attr' : {
                                 'nonvalidate': 'nonvalidate',
@@ -68,19 +99,19 @@
                                 'rows': '1'
                             }
                         }) }}
-                        <button type="submit" class="button col-4 btn">Laisser un commentaire</button>
+                        <button type="submit" class="button col-4 col-md-5 btn pt-1">Laisser un commentaire</button>
                         {{ form_end(comment_form)}}
                     </div>
             </div>
         {% endif %}
 
-        <div class="figure-comments col-6">
+        <div class="figure-comments col-11 col-xl-6">
             {% for comment in comments %}
-                <div class="row comment">
-                    <div class="comment-userphoto col-2">
+                <div class="row comment col-12 mx-auto d-flex flex-row justify-content-center">
+                    <div class="comment-userphoto col-1 col-xl-2">
                         <img src="{{ asset('/images/uploads/users') }}/{{ comment.user.userPhoto }}" alt="Avatar de {{ comment.user.username }}">
                     </div>
-                    <div class="comment-datas col-10 p-2">
+                    <div class="comment-datas col-9 col-xl-10 p-2">
                         <h4 class="comment-header">{{ comment.user.username }} <span class="date">le {{ comment.createdAt|format_datetime(locale='fr') }} </span></h4>
                         <p class="comment-message">{{ comment.message }}</p>
                     </div>  
