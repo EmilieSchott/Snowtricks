@@ -87,6 +87,46 @@ h1, h2, h3, h4, h5, h6 {
 .arrow {
     fill:#fff;
 }
+/*
+.frame-disabled {
+    fill:rgba(13, 114, 156, 0.8);
+}
+
+.arrow-disabled {
+    fill:#fff;
+}
+*/
+
+g:active .frame, .frame-disabled {
+	fill: rgba(13, 114, 156, 0.8);
+}
+
+g:active .arrow {
+	fill: #7eb0c5;
+}
+
+.arrow-disabled {
+    fill: #015988;
+}
+
+
+@media screen and (min-width:1200px) {
+	.arrow {
+		transition: fill ease-out 300ms;
+	}
+
+	g:hover .arrow {
+		fill: #7eb0c5;
+	}
+}
+
+
+
+
+
+
+
+
 
 .button {
     background-color:rgba(13, 114, 156, 0.8);

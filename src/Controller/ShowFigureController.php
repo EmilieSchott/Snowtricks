@@ -19,6 +19,8 @@ class ShowFigureController extends AbstractController
      */
     public function show(Request $request, Figure $figure, CommentRepository $commentRepository, EntityManagerInterface $entityManager): Response
     {
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $paginator = $commentRepository->getCommentPaginatorjoinedToUser($figure, $offset);
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
@@ -31,10 +33,12 @@ class ShowFigureController extends AbstractController
         }
 
         return $this->render('show_figure.html.twig', [
-                    'controller_name' => 'ShowFigureController',
-                    'figure' => $figure,
-                    'comments' => $commentRepository->findBy(['figure' => $figure], ['createdAt' => 'DESC']),
-                    'comment_form' => $form->createView(),
-                ]);
+            'controller_name' => 'ShowFigureController',
+            'figure' => $figure,
+            'comment_form' => $form->createView(),
+            'comments' => $paginator,
+            'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($paginator), $offset + CommentRepository::PAGINATOR_PER_PAGE),
+        ]);
     }
 }
