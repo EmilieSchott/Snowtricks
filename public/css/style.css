@@ -618,9 +618,74 @@ a:hover .crud-icon-reverse {
 }
 
 .login-section {
-    margin-top: 205px;
-    margin-bottom: 150px;
+    margin-top: 110px;
+    margin-bottom: 0px;
 }
+
+@media (min-width: 576px) {
+    .login-section {
+        margin-top: 60px;
+        margin-bottom: 110px;
+    }
+}
+
+@media (min-width: 768px) {
+    .login-section {
+        margin-top: 250px;
+        margin-bottom: 250px;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .login-title {
+        display:none;
+    }
+
+    .login-title-responsive {
+        padding-bottom: 30px;
+    }
+
+    .login-link {
+        display:none;
+    }
+
+    .login-links-responsive {
+        margin-top:30px;
+        margin-bottom: -35px;
+    }
+}
+
+@media (min-width: 992px) {
+    .login-section {
+        margin-top: 125px;
+        margin-bottom: 0px;
+    }
+
+    .login-title {
+        padding-bottom: 30px;
+    }
+
+    .login-title-responsive {
+        display:none;
+    }
+
+    .login-links-responsive {
+        display:none;
+    }
+
+    .login-link-responsive {
+        display:none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .login-section {
+        margin-top: 195px;
+        margin-bottom: 150px;
+    }
+}
+
 
 .login-form {
     background-color: rgba(255, 255, 255, 0.80);
