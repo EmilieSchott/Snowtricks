@@ -14,10 +14,7 @@ class IndexController extends AbstractController
      * @Route("/", name="homepage")
      */
     public function index(FigureRepository $figureRepository, ImageRepository $imageRepository): Response
-    {/*
-        $figures = $figureRepository->findAllJoinedToImage();
-        dd($figures);*/
-
+    {
         return $this->render('index.html.twig', [
               'controller_name' => 'IndexController',
               'figures' => $figureRepository->findAllJoinedToImage(),
