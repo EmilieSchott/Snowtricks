@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -16,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     message="Cette figure existe déjà sur le site."
  * )
  * @UniqueEntity("slug")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Figure
 {
@@ -64,12 +66,12 @@ class Figure
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="figure", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="figure", orphanRemoval=true, cascade={"persist"})
      */
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity=Video::class, mappedBy="figure", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Video::class, mappedBy="figure", orphanRemoval=true, cascade={"persist"})
      */
     private $videos;
 
@@ -105,6 +107,11 @@ class Figure
     public function getSlug(): ?string
     {
         return $this->slug;
+    }
+
+    public function computeSlug(SluggerInterface $slugger)
+    {
+        $this->slug = (string) $slugger->slug((string) $this->name)->lower();
     }
 
     public function setSlug(string $slug): self
@@ -143,6 +150,14 @@ class Figure
         return $this->createdAt;
     }
 
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
@@ -153,6 +168,14 @@ class Figure
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updatedAt = new \DateTime();
     }
 
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self

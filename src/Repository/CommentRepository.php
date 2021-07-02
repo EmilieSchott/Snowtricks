@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Comment;
+use App\Entity\Figure;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,5 +18,17 @@ class CommentRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Comment::class);
+    }
+
+    public function findByJoinedToUser(Figure $figure): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.figure = :figure')
+            ->setParameter('figure', $figure)
+            ->innerJoin('c.user', 'u')
+            ->orderBy('c.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+    	;
     }
 }

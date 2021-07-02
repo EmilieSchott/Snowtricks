@@ -58,6 +58,7 @@ h1, h2, h3, h4, h5, h6 {
         color:white;
         font-size: 10px;
         padding-left: 70px;
+        margin-top: 60px;
     }
 
     .footer-menu {
@@ -92,25 +93,26 @@ h1, h2, h3, h4, h5, h6 {
     color:white;
     margin-left:10px;
     margin-right:10px;
+    border-radius:0px;
 }
 
 .button:hover {
     background-color:rgba(13, 114, 156, 1);
-    color:#7eb0c5;
+    color:white;
 }
 
 .card-heading h4 {
     margin-bottom: 0px;
 }
 
-.card-icon{
+.crud-icons-container {
     margin-left: 0px;
     margin-right: 0px;
 }
 
-.card-icon svg {
-    margin-left: 10px;
-    margin-right: 10px;
+.crud-icons-container svg {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .crud-icon {
@@ -118,6 +120,34 @@ h1, h2, h3, h4, h5, h6 {
     padding-left: 10px;
     padding-right: 10px;
     margin-top:0px;
+}
+
+.crud-icon:hover {
+    fill:rgba(13, 114, 156);
+}
+
+
+.crud-icons-container-reverse {
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: rgba(13, 114, 156, 0.8);
+}
+
+.crud-icons-container-reverse svg {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom:3px;
+}
+
+.crud-icon-reverse {
+    fill:white;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top:0px;
+}
+
+a:hover .crud-icon-reverse {
+    fill:rgba(13, 114, 156);
 }
 
 .down {
@@ -206,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (min-width: 992px) {
-    .section-content {
+    .section-tricks {
         display:flex;
         justify-content: space-between; 
         flex-wrap: wrap;
@@ -225,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.card {
+.section-tricks .card {
    width: 18rem; 
    margin-top:15px;
    margin-bottom:15px;
@@ -243,4 +273,150 @@ h1, h2, h3, h4, h5, h6 {
     .load {
         margin-bottom:0px;
     }
+}
+
+.presentation-body {
+    background-image: url("/images/site/main.jpg");  
+    background-attachment: fixed;
+    background-position: center -50px 0px;
+    background-size: cover;
+}
+
+.figure-presentation-page {
+ background-color: rgba(255, 255, 255, 0.80);
+ margin-top: 220px;
+}
+
+.first-image-icons {
+    position:relative;
+    top:50px;
+    right:15px;
+}
+
+.first-image {
+    padding: 0px;
+    margin-top:-442px;
+}
+
+.figure-title
+{
+	background-color: rgba(13, 114, 156, 0.6);
+	height:400px;
+    width:400px;
+    color: white;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+	animation: figure-name-translation cubic-bezier(.65,.95,.64,1.02) 2000ms ;
+    position: relative;
+    top:220px;
+}
+
+@keyframes figure-name-translation
+{
+	from 
+	{
+		transform: translateX(400%);
+	}
+	to
+	{
+		transform: translateX(0%);
+	}
+}
+
+.comment-datas, .post-media {
+    border-width: 2px;
+    border-color: rgba(13, 114, 156, 0.8);
+    border-style: groove;
+}
+
+.media {
+    margin:5px;
+}
+
+.image-media-element, 
+.video-media-element, 
+.video-media-element-button, 
+.image-media-element-button {
+    margin: 3px;
+    max-width: 200px;
+}
+
+.image-media-element img, 
+.video-media-element img, 
+.video-media-element-button img, 
+.image-media-element-button img {
+    max-width: 200px;
+}
+
+.badge {
+    background-color: rgba(13, 114, 156, 0.8);
+    font-size: 16px;
+    border-radius: 0px;
+    margin: 5px;
+}
+
+.date {
+    font-family: Titillium Web;
+    font-size: 12px;
+}
+
+.comment-userphoto {
+    padding: 0px;
+}
+
+.comment-userphoto img {
+    width:100px;
+}
+
+.comment {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.figure-comments .card {
+    height:auto;
+}
+
+.leave-comment {
+    border-top: groove rgba(13, 114, 156, 0.8) 1px;
+    border-bottom: groove rgba(13, 114, 156, 0.8) 1px;
+}
+
+.comment-form button {
+    height:42px;
+    position: relative;
+    bottom:5px;
+    margin-bottom:15px;
+}
+
+.comment-field {
+    position: relative;
+    bottom:5px;
+    margin-bottom:15px;
+    padding: 0px;
+}
+
+.add{
+    height:175px;
+}
+
+.login-section {
+    margin-top: 205px;
+    margin-bottom: 150px;
+}
+
+.login-form {
+    background-color: rgba(255, 255, 255, 0.80);
+    border-width: 2px;
+    border-color: rgba(13, 114, 156, 0.8);
+    border-style: groove;
+   }
+
+.form-control {
+    border-top:none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px rgba(13, 114, 156, 0.8) groove;
 }

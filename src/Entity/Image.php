@@ -22,16 +22,6 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=45, unique=true)
-     * @Assert\Image(
-     *     minWidth = 600,
-     *     maxWidth = 2000,
-     *     minWidthMessage = "La largeur minimale attendue est de {{ min_width }}px.",
-     *     maxWidthMessage = "La largeur maximmale attendue est de {{ max_width }}px.",
-     *     allowPortrait = false,
-     *     allowPortraitMessage = "Les images au format portrait ne sont pas autorisées.",
-     *     allowSquare = false,
-     *     allowSquareMessage = "Les images carrées ne sont pas autorisées."
-     * )
      */
     private $name;
 

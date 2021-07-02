@@ -18,4 +18,14 @@ class FigureRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Figure::class);
     }
+
+    public function findAllJoinedToImage(): array
+    {
+        return $this->createQueryBuilder('f')
+            ->innerJoin('f.images', 'i')
+            ->orderBy('f.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

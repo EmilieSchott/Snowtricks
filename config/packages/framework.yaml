@@ -1,5 +1,7 @@
 framework:
     secret: '%env(APP_SECRET)%'
+    validation: { enable_annotations: true }
+    
 
     session:
         handler_id: null
