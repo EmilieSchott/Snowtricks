@@ -32,12 +32,12 @@
     <section class="mx-auto" id="tricks">
         <div class="section-heading d-flex justify-content-start">
             <h3 class=" my-auto pr-5">Tricks</h3>
-            <a class="btn button" href="{{ path('create_figure') }}" role="button">Crééer</a>
+            <a class="btn button" href="{{ path('figure_form') }}" role="button">Crééer</a>
         </div>
         <div class="section-tricks col-12">
             {% for figure in figures %}
                 <div class="card col-2">
-                    <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
+                    <img src="{% if figure.images.0.name is not defined %}{{ asset('/images/site') }}/replace-main.jpg {% else %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% endif %}" class="card-img-top" alt="{% if figure.images.0.alt is defined %}{{ figure.images.0.alt }}{% else %}Remplacer l'image principale{% endif %}">
                     <div class="card-body px-1 py-auto d-flex align-items-start justify-content-between flex-wrap">
                         <h5 class="card-heading">
                             <a href="{{ path('show_figure', { slug: figure.slug}) }}">
@@ -45,7 +45,7 @@
                             </a>
                         </h5>
                         <div class="crud-icons-container">
-                            <a href="{{ path('modify_figure', { slug: figure.slug}) }}">
+                            <a href="{{ path('figure_form', { slug: figure.slug}) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
                                     <path class="crud-icon" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
                                 </svg>

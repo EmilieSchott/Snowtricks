@@ -17,7 +17,7 @@ class IndexController extends AbstractController
     {
         return $this->render('index.html.twig', [
               'controller_name' => 'IndexController',
-              'figures' => $figureRepository->findAllJoinedToImage(),
+              'figures' => $figureRepository->findAll(),
           ]);
     }
 }
