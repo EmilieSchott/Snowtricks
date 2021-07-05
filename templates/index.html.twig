@@ -43,7 +43,7 @@
         </div>
         <div class="section-tricks col-12 d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between justify-content-lg-start ">
             {% for figure in figures %}
-                <div class="card col-2">
+                <div class="card col-2 mx-0 my-3 mx-lg-2 m-xl-4">
                     <img src="{% if figure.images.0.name is not defined %}{{ asset('/images/site') }}/replace-main.jpg {% else %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% endif %}" class="card-img-top" alt="{% if figure.images.0.alt is defined %}{{ figure.images.0.alt }}{% else %}Remplacer l'image principale{% endif %}">
                     <div class="card-body px-1 py-auto d-flex align-items-start justify-content-between flex-wrap">
                         <h5 class="card-heading">
