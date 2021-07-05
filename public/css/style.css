@@ -237,14 +237,20 @@ a:hover .crud-icon-reverse {
 
 .down {
     position: absolute;
-    bottom : 20px;
+    bottom : 80px;
     right: 20px;
 }
 
-@media (max-width: 991px) {
-    .up {
-        visibility: hidden;
+@media (min-width:992px) {
+    .down {
+        bottom : 20px;
     }
+}
+
+.up {
+    position: relative;
+    bottom : 75px;
+    right: 20px;
 }
 
 @media (min-width:992px) {
@@ -265,6 +271,20 @@ a:hover .crud-icon-reverse {
 	height:800px;
 }
 
+@media (min-width: 576px) {
+    .hero {
+	background:url("/images/site/main.jpg") no-repeat 0px 0px;
+	height:1350px;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero {
+	background:url("/images/site/main.jpg") no-repeat -120px 0px;
+	height:1350px;
+    }
+}
+
 .moto
 {
 	background-color: rgba(13, 114, 156, 0.6);
@@ -278,23 +298,16 @@ a:hover .crud-icon-reverse {
     top:200px;
 }
 
-@media (min-width: 992px) {
-    .hero {
-	background:url("/images/site/main.jpg") no-repeat center;
-	background-size: cover;
-	height:1350px;
-    }
-
+@media (min-width: 576px) {
     .moto {
-	background-color: rgba(13, 114, 156, 0.6);
-	height:250px;
-    color: white;
-	display:flex;
-	flex-direction: column;
-	justify-content: center;
-	animation: moto-translation cubic-bezier(.65,.95,.64,1.02) 2000ms backwards;
-    position: relative;
-    top:200px;
+        top:30px;
+    }
+}
+
+@media (min-width: 992px) {
+    .moto {
+        top:230px;
+        right:110px;
     }
 }
 
@@ -321,11 +334,12 @@ a:hover .crud-icon-reverse {
 }
 
 @media (min-width: 992px) {
+    /*
     .section-tricks {
         display:flex;
         justify-content: space-between; 
         flex-wrap: wrap;
-    }
+    }*/
 
     #tricks {
         max-width: 90%;
