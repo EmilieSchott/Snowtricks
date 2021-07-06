@@ -1,7 +1,7 @@
 security:
     encoders:
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
 
     providers:
         # used to reload user from session & other features (e.g. switch_user)
