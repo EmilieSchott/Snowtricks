@@ -1,7 +1,15 @@
 body {
     font-family: Titillium Web;
-    font-size: 16px;
+    
+    font-size: 12px;
     color:#333;
+}
+
+
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,6 +34,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link:hover {
     color: #7eb0c5;
+}
+
+.nav-link:active {
+    color: #015988;
 }
 
 @media (max-width: 991px) {
@@ -88,17 +100,50 @@ h1, h2, h3, h4, h5, h6 {
     fill:#fff;
 }
 
+g:active .frame, .frame-disabled {
+	fill: rgba(13, 114, 156, 0.8);
+}
+
+g:active .arrow {
+	fill: #7eb0c5;
+}
+
+.arrow-disabled {
+    fill: #015988;
+}
+
+
+@media screen and (min-width:1200px) {
+	.arrow {
+		transition: fill ease-out 300ms;
+	}
+
+	g:hover .arrow {
+		fill: #7eb0c5;
+	}
+}
+
+
 .button {
     background-color:rgba(13, 114, 156, 0.8);
     color:white;
     margin-left:10px;
     margin-right:10px;
     border-radius:0px;
+    font-size: 12px;
+
 }
 
 .button:hover {
     background-color:rgba(13, 114, 156, 1);
     color:white;
+}
+
+
+@media screen and (min-width:768px) {
+    .button {
+        font-size: 16px;
+    }
 }
 
 .card-heading h4 {
@@ -283,8 +328,29 @@ a:hover .crud-icon-reverse {
 }
 
 .figure-presentation-page {
- background-color: rgba(255, 255, 255, 0.80);
- margin-top: 220px;
+    background-color: rgba(255, 255, 255, 0.80);
+    margin-top: 65px;
+    margin-bottom: 60px;
+}
+
+@media (min-width: 576px) {
+    .figure-presentation-page {
+        margin-top: 35px;
+        margin-bottom: 75px;
+    }
+}
+
+@media (min-width: 768px) {
+    .figure-presentation-page {
+        margin-top: 75px;
+        margin-bottom: 55px;
+    }
+}
+
+@media (min-width: 992px) {
+    .figure-presentation-page {
+        margin-top: 200px;
+    }
 }
 
 .first-image-icons {
@@ -295,14 +361,36 @@ a:hover .crud-icon-reverse {
 
 .first-image {
     padding: 0px;
-    margin-top:-442px;
+    margin-top:-200px;
+
+}
+
+@media (min-width: 576px) {
+    .first-image {
+        margin-top:-150px;
+        padding: 0px;
+    }
+}
+
+@media (min-width: 768px) {
+    .first-image {
+        margin-top:-150px;
+        padding: 0px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .first-image {
+        margin-top:-400px;
+        padding: 0px;
+    }
 }
 
 .figure-title
 {
 	background-color: rgba(13, 114, 156, 0.6);
-	height:400px;
-    width:400px;
+	height:150px;
+    width:150px;
     color: white;
 	display:flex;
 	flex-direction: column;
@@ -310,7 +398,34 @@ a:hover .crud-icon-reverse {
     align-items: center;
 	animation: figure-name-translation cubic-bezier(.65,.95,.64,1.02) 2000ms ;
     position: relative;
-    top:220px;
+    top:-20px;
+}
+
+@media (min-width: 576px) {
+    .figure-title {
+        top:50px;
+    }
+}
+
+@media (min-width: 768px) {
+    .figure-title {
+        top:130px;
+    }
+}
+
+@media (min-width: 992px) {
+    .figure-title {
+        top:200px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .figure-title {
+        height:400px;
+        width:400px;
+        color: white;
+        top:220px;
+    }
 }
 
 @keyframes figure-name-translation
@@ -331,9 +446,24 @@ a:hover .crud-icon-reverse {
     border-style: groove;
 }
 
-.media {
-    margin:5px;
+
+@media (max-width: 1199px) {
+    .media {
+        display:none;
+    }
 }
+
+@media (min-width: 1200px) {
+    .media {
+        margin:5px;
+    }
+
+    .media-phone-version {
+        display:none;
+        
+    }
+}
+
 
 .image-media-element, 
 .video-media-element, 
@@ -350,11 +480,32 @@ a:hover .crud-icon-reverse {
     max-width: 200px;
 }
 
+.figure-info {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.figure-info-element {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .badge {
     background-color: rgba(13, 114, 156, 0.8);
-    font-size: 16px;
+    font-size: 12px;
     border-radius: 0px;
     margin: 5px;
+}
+
+@media (min-width: 768px) {
+    .badge {
+        background-color: rgba(13, 114, 156, 0.8);
+        font-size: 16px;
+        border-radius: 0px;
+        margin: 5px;
+    }
 }
 
 .date {
@@ -363,11 +514,20 @@ a:hover .crud-icon-reverse {
 }
 
 .comment-userphoto {
-    padding: 0px;
+    padding-right: 5px;
+    width:70px;
+}
+
+@media (min-width: 576px) {
+    .comment-userphoto {
+        padding-right: 10px;
+        width:100px;
+    }
 }
 
 .comment-userphoto img {
-    width:100px;
+    width:100%;
+    border-radius: 75px;
 }
 
 .comment {
