@@ -39,7 +39,12 @@
     <section class="mx-auto" id="tricks">
         <div class="section-heading d-flex justify-content-start">
             <h3 class=" my-auto pr-5">Tricks</h3>
-            <a class="btn button" href="{{ path('figure_form') }}" role="button">Crééer</a>
+            {% if app.user %}
+            <div class="mb-3">
+                <a class="btn button" href="{{ path('figure_form') }}" role="button">Crééer</a>
+            </div>
+            {% endif %}
+            
         </div>
         <div class="section-tricks col-12 d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between justify-content-lg-start ">
             {% for figure in figures %}

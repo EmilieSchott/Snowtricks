@@ -521,7 +521,7 @@ a:hover .crud-icon-reverse {
 
 @media (max-width: 1199px) {
     .media {
-        display:none;
+        display:none !important;
     }
 }
 
@@ -531,7 +531,7 @@ a:hover .crud-icon-reverse {
     }
 
     .media-phone-version {
-        display:none;
+        display:none !important;
         
     }
 }

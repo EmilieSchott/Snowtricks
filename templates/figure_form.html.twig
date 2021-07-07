@@ -15,10 +15,10 @@
 {% block class %}class="presentation-body"{% endblock %}
 
 {% block body %}
-    <section class="figure-presentation-page col-8 mx-auto d-flex flex-column align-items-center" >
+    <section class="figure-presentation-page col-11 col-sm-10 col-xl-8 mx-auto d-flex flex-column align-items-center">           
         {{ form_start(figure_form, {'attr' : {
             'novalidate': 'novalidate',
-            'class': 'col-12'
+            'class': 'col-12 d-flex flex-column'
         }}) }}
             <div class="figure-title col-8 col-md-6 mx-auto p-3 p-md-4 p-lg-5 text-center"> 
                 <h2>{% if figure.name is not empty %}Le {{ figure.name }} {% else %}Création d'une nouvelle figure{% endif %}</h2>
@@ -156,11 +156,11 @@
                 </div>
             </div>
             
-            <div class="figure-datas col-6 mx-auto d-flex flex-column align-items-start">
-                <div class="figure-name col-8 mb-3">
+            <div class="figure-datas col-11 col-xl-6 mx-auto d-flex flex-column align-items-start">
+                <div class="figure-name col-12 col-xl-8 mb-3">
                     {{ form_row(figure_form.name, {
                         'attr' : {
-                            'class': 'figure-field', 
+                            'class': 'figure-field col-12', 
                             'placeholder': 'Nom de la figure',
                         }
                     }) }}
@@ -168,16 +168,16 @@
                 <div class="figure-description col-12">
                     {{ form_row(figure_form.description, {
                         'attr' : {
-                            'class': 'figure-field', 
+                            'class': 'figure-field col-12', 
                             'placeholder': 'Description de la figure',
                             'rows': '10'
                         }
                     }) }}
                 </div> 
-                <div class="figure-group col-3">
+                <div class="figure-group col-6">
                     {{ form_row(figure_form.figureGroup, {
                         'attr' : {
-                            'class': 'figure-field',
+                            'class': 'figure-field col-12',
                         }
                     }) }}
                 </div>
@@ -189,7 +189,6 @@
         <input type="hidden" name="token" value="{{ csrf_token('figure_form') }}"/>
         {{ form_end(figure_form)}}
     </section>
-
 {% endblock %}
 
     {% block javascripts %}
@@ -199,6 +198,7 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous">
         </script>
+
         <script>
             jQuery(document).ready(function() {
                 // Get the ul that holds the collection of videos
