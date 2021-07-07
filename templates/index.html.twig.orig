@@ -39,9 +39,19 @@
     <section class="mx-auto" id="tricks">
         <div class="section-heading d-flex justify-content-start">
             <h3 class=" my-auto pr-5">Tricks</h3>
-            <a class="btn button" href="{{ path('figure_form') }}" role="button">Crééer</a>
+            {% if app.user %}
+            <div class="mb-3">
+                <a class="btn button" href="{{ path('create_figure') }}" role="button">Crééer</a>
+            </div>
+            {% endif %}
+            
         </div>
+<<<<<<< HEAD
+
+        <div class="section-tricks col-12">
+=======
         <div class="section-tricks col-12 d-flex justify-content-start ">
+>>>>>>> c4b0f2e (feature/connexion_page|REBASE 2/8)
             {% for figure in figures %}
                 <div class="card col-2">
                     <img src="{% if figure.images.0.name is not defined %}{{ asset('/images/site') }}/replace-main.jpg {% else %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% endif %}" class="card-img-top" alt="{% if figure.images.0.alt is defined %}{{ figure.images.0.alt }}{% else %}Remplacer l'image principale{% endif %}">
