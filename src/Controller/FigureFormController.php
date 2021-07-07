@@ -34,6 +34,11 @@ class FigureFormController extends AbstractController
             $entityManager->persist($figure);
             $entityManager->flush();
 
+            $this->addFlash(
+                'notice',
+                'La figure a bien été enregistrée.'
+            );
+
             return $this->redirectToRoute('homepage');
         }
 

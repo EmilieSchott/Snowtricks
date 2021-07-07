@@ -29,11 +29,19 @@
         </div>
     </section>
 
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice col-4 p-3 mx-auto d-flex flex-column align-items-center justify-content-center">
+                <h5 class="mb-2">Notice : </h5>
+                <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
     <section class="mx-auto" id="tricks">
         <div class="section-heading d-flex justify-content-start">
             <h3 class=" my-auto pr-5">Tricks</h3>
             <a class="btn button" href="{{ path('figure_form') }}" role="button">Crééer</a>
         </div>
+
         <div class="section-tricks col-12">
             {% for figure in figures %}
                 <div class="card col-2">
