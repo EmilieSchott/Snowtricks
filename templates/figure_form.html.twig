@@ -20,35 +20,6 @@
             'novalidate': 'novalidate',
             'class': 'col-12'
         }}) }}
- {#            {% if figure.images.0 is defined %}
-            <div class="form-first-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
-                <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
-                        <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
-                    </svg>
-                </a>
-            </div>
-            <div class="modal fade" id="ModalImage0" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="imageModalLabel">Modifier une image</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="first-image-modal image-form-content mb-3">
-                               {{ form_row(figure_form.images.0.photo) }} 
-                                <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.
-                                </p> 
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-            {% endif %} #}
             <div class="figure-title col-8 col-md-6 mx-auto p-3 p-md-4 p-lg-5 text-center"> 
                 <h2>{% if figure.name is not empty %}Le {{ figure.name }} {% else %}Création d'une nouvelle figure{% endif %}</h2>
             </div>
@@ -93,43 +64,41 @@
                                     </div>
                                 </div>
                             {% else %}
-                            {#    <div class="media flex-wrap d-flex flex-row align-items-end justify-content-center mt-4 mb-2"> #}
-                                    <div class="image-media-element d-flex flex-wrap flex-column justify-content-end align-items-center">
-                                        {% if not image.vars.valid %} 
-                                            <img src="{{ asset('/images/site') }}/file-error.jpg" alt="Erreur fichier">
-                                        {% else %} 
-                                            <a href="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}">
-                                                <img src="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}" alt="{{ image.vars.value.alt }}">
-                                            </a>
-                                        {% endif %} 
-                                        <div class="other-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
-                                            <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage{{ loop.index }}"> 
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
-                                                    <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                        <div class="modal fade" id="ModalImage{{ loop.index }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="imageModalLabel">Modifier une image</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="image-form-content mb-3">
-                                                            {{ form_row(image.photo) }}
-                                                            <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
+                                <div class="image-media-element d-flex flex-wrap flex-column justify-content-end align-items-center">
+                                    {% if not image.vars.valid %} 
+                                        <img src="{{ asset('/images/site') }}/file-error.jpg" alt="Erreur fichier">
+                                    {% else %} 
+                                        <a href="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}">
+                                            <img src="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}" alt="{{ image.vars.value.alt }}">
+                                        </a>
+                                    {% endif %} 
+                                    <div class="other-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
+                                        <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage{{ loop.index }}"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
+                                                <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="modal fade" id="ModalImage{{ loop.index }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="imageModalLabel">Modifier une image</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="image-form-content mb-3">
+                                                        {{ form_row(image.photo) }}
+                                                        <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.</p>
                                                     </div>
                                                 </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
+                                                </div>
                                             </div>
-                                        </div> 
-                                    </div>
-                            {#    </div> #}
+                                        </div>
+                                    </div> 
+                                </div>
                             {% endif %}     
                         {% endfor %}
                     {% endif %} 
