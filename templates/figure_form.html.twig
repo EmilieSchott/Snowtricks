@@ -20,16 +20,11 @@
             'novalidate': 'novalidate',
             'class': 'col-12'
         }}) }}
-            {% if figure.images.0 is defined %}
-            <div class="first-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
+ {#            {% if figure.images.0 is defined %}
+            <div class="form-first-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
                 <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
                         <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
-                    </svg>
-                </a>
-                <a class="crud-element-reverse" href="#">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20">
-                        <path class="crud-icon-reverse" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/>
                     </svg>
                 </a>
             </div>
@@ -41,10 +36,10 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="image-form-content mb-3">
-                                {{ form_row(figure_form.images.0.photo) }} 
+                            <div class="first-image-modal image-form-content mb-3">
+                               {{ form_row(figure_form.images.0.photo) }} 
                                 <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.
-                                </p>
+                                </p> 
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -52,64 +47,93 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            {% endif %} 
+            </div> 
+            {% endif %} #}
             <div class="figure-title col-8 col-md-6 mx-auto p-3 p-md-4 p-lg-5 text-center"> 
                 <h2>{% if figure.name is not empty %}Le {{ figure.name }} {% else %}Création d'une nouvelle figure{% endif %}</h2>
             </div>
-            <div class="first-image ">  
-                <img src="{% if figure.images.0.name is not defined %}{{ asset('/images/site') }}/replace-main.jpg {% else %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% endif %}" class="card-img-top" alt="{% if figure.images.0.alt is defined %}{{ figure.images.0.alt }}{% else %}Remplacer l'image principale{% endif %}">
-            </div>
-            <div class="media flex-wrap d-flex flex-row align-items-end justify-content-center mt-4 mb-2">
-                <span class="images d-flex flex-wrap flex-row" data-prototype="{{ form_widget(figure_form.images.vars.prototype)|e('html_attr') }}">
-                    {% if figure.images is defined %}
-                        {% for image in figure_form.images[1:] %} 
-                            <div class="image-media-element d-flex flex-wrap flex-column justify-content-end align-items-center">
-                            {% if not image.vars.valid %} 
-                                <img src="{{ asset('/images/site') }}/file-error.jpg" alt="Erreur fichier">
-                            {% else %} 
-                                <a href="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}">
-                                    <img src="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}" alt="{{ image.vars.value.alt }}">
-                                </a>
-                            {% endif %} 
-                                <div class="crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
-                                    <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage{{ loop.index }}"> 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
-                                            <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
-                                        </svg>
-                                    </a>
-                                    <a class="crud-element-reverse" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20">
-                                            <path class="crud-icon-reverse" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                                <div class="modal fade" id="ModalImage{{ loop.index }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="imageModalLabel">Modifier une image</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="image-form-content mb-3">
-                                                    {{ form_row(image.photo) }}
-                                                    <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.</p>
+            <div class="media col-12 mx-auto flex-wrap d-flex flex-row align-items-end justify-content-center mt-4 mb-2">
+                <span class="images col-12 d-flex flex-wrap flex-row justify-content-center" data-prototype="{{ form_widget(figure_form.images.vars.prototype)|e('html_attr') }}">
+                    {% if figure.images is empty %}
+                        <div class="first-image">  
+                            <img src="{{ asset('/images/site') }}/replace-main.jpg" class="card-img-top" alt="Remplacer l'image principale">
+                        </div>
+                    {% else %}
+                        {% for image in figure_form.images %} 
+                            {% if loop.index == 1 %}
+                                <div class="col-12 d-flex flex-wrap flex-row justify-content-end">
+                                    <div class="form-first-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
+                                        <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage{{ loop.index }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
+                                                <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="modal fade" id="ModalImage{{ loop.index }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="imageModalLabel">Modifier une image</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="first-image-modal image-form-content mb-3">
+                                                        {{ form_row(image.photo) }}
+                                                        <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
-                                            </div>
                                         </div>
+                                    </div> 
+                                    <div class="first-image col-12">  
+                                        <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="registered-image card-img-top" alt="{{ figure.images.0.alt }}">
                                     </div>
-                                </div> 
-                            </div>
+                                </div>
+                            {% else %}
+                            {#    <div class="media flex-wrap d-flex flex-row align-items-end justify-content-center mt-4 mb-2"> #}
+                                    <div class="image-media-element d-flex flex-wrap flex-column justify-content-end align-items-center">
+                                        {% if not image.vars.valid %} 
+                                            <img src="{{ asset('/images/site') }}/file-error.jpg" alt="Erreur fichier">
+                                        {% else %} 
+                                            <a href="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}">
+                                                <img src="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}" alt="{{ image.vars.value.alt }}">
+                                            </a>
+                                        {% endif %} 
+                                        <div class="other-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
+                                            <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage{{ loop.index }}"> 
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
+                                                    <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="modal fade" id="ModalImage{{ loop.index }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="imageModalLabel">Modifier une image</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="image-form-content mb-3">
+                                                            {{ form_row(image.photo) }}
+                                                            <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                            {#    </div> #}
+                            {% endif %}     
                         {% endfor %}
                     {% endif %} 
                 </span>       
-                <span class="image-media-element-button add d-flex flex-column align-items-center m-2">
-                    <a type="button" class="add_image_link" data-collection-holder-class="images"><img src="{{ asset('/images/site') }}/add-image.jpg" alt="Ajouter une image"></a> 
-                </span> 
 
                 <span class="videos d-flex flex-wrap flex-row" data-prototype="{{ form_widget(figure_form.videos.vars.prototype)|e('html_attr') }}">
                     {% if figure.videos is defined %}                    
@@ -120,11 +144,6 @@
                                     <a class="crud-element-reverse modal-link" data-bs-toggle="modal" data-bs-target="#ModalVideo{{ loop.index }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
                                             <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
-                                        </svg>
-                                    </a>
-                                    <a class="crud-element-reverse" href="#">                                 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20">
-                                            <path class="crud-icon-reverse" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/>
                                         </svg>
                                     </a>
                                 </div>
@@ -155,11 +174,17 @@
                         {% endfor %}                  
                     {% endif %}
                 </span>
-                <span class="video-media-element-button add d-flex flex-column align-items-center m-2">
-                    <a type="button" class="add_video_link" data-collection-holder-class="videos"><img src="{{ asset('/images/site') }}/add-video.jpg" alt="Ajouter une video"></a> 
-                </span> 
             </div>    
-            <div class="new-media-form col-6 mx-auto d-flex flex-column align-items-start">
+
+            <div class="new-media-form col-11 col-xl-6 mx-auto d-flex flex-column align-items-start">
+                <div class="d-flex align-self-center justify-content-center col-12 flex-wrap">
+                    <span class="image-media-element-button add d-flex flex-column align-items-center m-2">
+                        <a type="button" class="add_image_link" data-collection-holder-class="images"><img src="{{ asset('/images/site') }}/add-image.jpg" alt="Ajouter une image"></a> 
+                    </span> 
+                    <span class="video-media-element-button add d-flex flex-column align-items-center m-2">
+                        <a type="button" class="add_video_link" data-collection-holder-class="videos"><img src="{{ asset('/images/site') }}/add-video.jpg" alt="Ajouter une video"></a> 
+                    </span> 
+                </div>
             </div>
             
             <div class="figure-datas col-6 mx-auto d-flex flex-column align-items-start">
@@ -193,7 +218,7 @@
                 </div>
             </div>
         <input type="hidden" name="token" value="{{ csrf_token('figure_form') }}"/>
-        {{ form_end(figure_form, {'render_rest': false}) }}
+        {{ form_end(figure_form)}}
     </section>
 
 {% endblock %}
@@ -209,6 +234,11 @@
             jQuery(document).ready(function() {
                 // Get the ul that holds the collection of videos
                 var $videosCollectionHolder = $('span.videos');
+
+                // add a delete link to all of the existing tag form li elements
+                $videosCollectionHolder.find('.crud-icons-container-reverse').each(function() {
+                    addDeleteLink($(this), $(this).parent());
+                });
 
                 // count the current form inputs we have (e.g. 2), use that as the new
                 // index when inserting a new item (e.g. 2)
@@ -261,10 +291,7 @@
                     $videoFormDiv.remove();
                 });
             }
-        </script> 
 
-
-        <script>
             jQuery(document).ready(function() {
                 // Get the ul that holds the collection of images
                 var $imagesCollectionHolder = $('span.images');
@@ -273,9 +300,21 @@
                 // index when inserting a new item (e.g. 2)
                 $imagesCollectionHolder.data('imageIndex', $imagesCollectionHolder.find('.modal').length);
 
+                // add a delete link to all of the existing tag form li elements
+                $imagesCollectionHolder.find('.other-image-icons').each(function() {
+                    addDeleteLink($(this), $(this).parent());
+                });
+
                 var $imagesCollectionHolderClass = $(".add_image_link").data('collectionHolderClass');
-                if(!$(".first-image-icons").length){
+                if(!$(".form-first-image-icons").length){
                     createFirstImageForm($imagesCollectionHolderClass);
+                }
+
+                if($(".form-first-image-icons").length){          
+                    var $firstImageHolder = $(".first-image");
+                    var $firstImageIcons = $(".form-first-image-icons");     
+                    addDeleteLink($firstImageIcons, $firstImageHolder.children());
+                //    createFirstImageForm($imagesCollectionHolderClass);
                 }
 
                 $('body').on('click', '.add_image_link', function(e) {
@@ -300,9 +339,18 @@
 
                 // Display the form in the page in a div, before the "Add an image" link div
                 var $newFormDiv = $('<div class="post-media col-12 mx-auto d-flex flex-column justify-content-between align-items-left my-2 p-2"><h5>Image principale à définir.</h5></div>').append(newForm);
-                $newFormDiv.append("<p>L'image doit être au format paysage, faire moins de 2Mo et moins de 2000px de large.<br/> Si aucune image n'ait choisi à la création de la fiche, une image générique sera affichée en attendant un choix lors d'une prochaine édition.</p>")
-                // Add the new form at the end of the list
-                $(".new-media-form").append($newFormDiv)
+
+                if(!$(".form-first-image-icons").length){
+                    $newFormDiv.append("<p>L'image doit être au format paysage, faire moins de 2Mo et moins de 2000px de large.<br/> Si aucune image n'ait choisi à la création de la fiche, une image générique sera affichée en attendant un choix lors d'une prochaine édition.</p>")
+                    // Add the new form at the end of the list
+                    $(".new-media-form").append($newFormDiv)
+                }
+
+                if($(".form-first-image-icons").length){
+                    $newFormDiv.append("<p>L'image doit être au format paysage, faire moins de 2Mo et moins de 2000px de large.</p>")
+                    // Add the new form at the end of the list
+                    $(".first-image-modal").append($newFormDiv)
+                }
             }
 
 
@@ -340,8 +388,20 @@
                 $imageFormDiv.append($removeFormButton);
 
                 $removeFormButton.on('click', function(e) {
-                    // remove the div for the image form
                     $imageFormDiv.remove();
+                });
+            }
+
+            function addDeleteLink($iconsContainer, $entityHolder) {
+                var $removeImageButton = $('<a class="crud-element-reverse"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20"><path class="crud-icon-reverse" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/></svg></a>');
+                $iconsContainer.append($removeImageButton);
+
+                $removeImageButton.on('click', function(e) {
+                    var $entityHolderParent = $entityHolder.parent();
+                    $entityHolder.remove();
+                    if(!$(".registered-image").length) {
+                        $entityHolderParent.append("<img src='{{ asset('/images/site') }}/replace-main.jpg' class='card-img-top' alt='Remplacer l\'image principale'>");
+                    }
                 });
             }
         </script> 

@@ -393,9 +393,15 @@ a:hover .crud-icon-reverse {
     }
 }
 
-.first-image-icons {
+.show-first-image-icons {
     position:relative;
     top:50px;
+    right:15px;
+}
+
+.form-first-image-icons {
+    position:relative;
+    top:-350px;
     right:15px;
 }
 
@@ -403,6 +409,11 @@ a:hover .crud-icon-reverse {
     padding: 0px;
     margin-top:-200px;
 
+}
+
+.first-image img {
+    width:100%;
+    margin:auto;
 }
 
 @media (min-width: 576px) {
@@ -423,6 +434,8 @@ a:hover .crud-icon-reverse {
     .first-image {
         margin-top:-400px;
         padding: 0px;
+        height:auto; 
+        overflow: hidden;
     }
 }
 
