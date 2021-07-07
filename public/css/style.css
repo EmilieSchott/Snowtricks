@@ -179,7 +179,6 @@ g:active .arrow {
     color:white;
 }
 
-
 @media screen and (min-width:768px) {
     .button {
         font-size: 16px;
@@ -210,7 +209,6 @@ g:active .arrow {
 .crud-icon:hover {
     fill:rgba(13, 114, 156);
 }
-
 
 .crud-icons-container-reverse {
     margin-left: 0px;
@@ -437,21 +435,21 @@ a:hover .crud-icon-reverse {
 
 @media (min-width: 576px) {
     .first-image {
-        margin-top:-190px;
+        margin-top:-189px;
         padding: 0px;
     }
 }
 
 @media (min-width: 768px) {
     .first-image {
-        margin-top:-195px;
+        margin-top:-192px;
         padding: 0px;
     }
 }
 
 @media (min-width: 1200px) {
     .first-image {
-        margin-top:-400px;
+        margin-top:-442px;
         padding: 0px;
         height:auto; 
         overflow: hidden;
