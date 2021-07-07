@@ -219,8 +219,8 @@ g:active .arrow {
 }
 
 .crud-icons-container-reverse svg {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 8px;
+    margin-right: 8px;
     margin-bottom:3px;
 }
 
@@ -234,6 +234,7 @@ g:active .arrow {
 a:hover .crud-icon-reverse {
     fill:rgba(13, 114, 156);
 }
+
 
 .down {
     position: absolute;
@@ -383,7 +384,7 @@ a:hover .crud-icon-reverse {
 
 .figure-presentation-page {
     background-color: rgba(255, 255, 255, 0.80);
-    margin-top: 65px;
+    margin-top: 25px;
     margin-bottom: 60px;
 }
 
@@ -413,9 +414,13 @@ a:hover .crud-icon-reverse {
     right:15px;
 }
 
+.unvisible-icons{
+    visibility: hidden;
+}
+
 .form-first-image-icons {
     position:relative;
-    top:-350px;
+    top:50px;
     right:15px;
 }
 
@@ -432,14 +437,14 @@ a:hover .crud-icon-reverse {
 
 @media (min-width: 576px) {
     .first-image {
-        margin-top:-150px;
+        margin-top:-190px;
         padding: 0px;
     }
 }
 
 @media (min-width: 768px) {
     .first-image {
-        margin-top:-150px;
+        margin-top:-195px;
         padding: 0px;
     }
 }
@@ -470,19 +475,19 @@ a:hover .crud-icon-reverse {
 
 @media (min-width: 576px) {
     .figure-title {
-        top:50px;
+        top:20px;
     }
 }
 
 @media (min-width: 768px) {
     .figure-title {
-        top:130px;
+        top:85px;
     }
 }
 
 @media (min-width: 992px) {
     .figure-title {
-        top:200px;
+        top:160px;
     }
 }
 
