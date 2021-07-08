@@ -15,6 +15,11 @@ class VideoFormHandler
             if ($videoUrl) {
                 $figureVideos[$videoLoop]->setUrl($videoUrl);
             }
+            if ($figureVideos[$videoLoop]) {
+                if (!$videoUrl && !$figureVideos[$videoLoop]->getUrl()) {
+                    $figure->removeVideo($figureVideos[$videoLoop]);
+                }
+            }
             ++$videoLoop;
         }
     }
