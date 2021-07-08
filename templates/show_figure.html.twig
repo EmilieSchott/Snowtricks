@@ -2,7 +2,7 @@
 
 {% block title %} {{ figure.name }}{% endblock %}
 {% block description %} Page de présentation d'une figure : {{ figure.name }}{% endblock %}
-{% block image %} {{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }} {% endblock %}
+{% block image %} {% if figure.images is not empty %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% else %}{{ asset('/images/site/main.jpg') }}{% endif %} {% endblock %}
 {% block type %} Article {% endblock %}
 {% block url %} {{ url('show_figure', { slug: figure.slug}) }} {% endblock %}
 
@@ -17,7 +17,7 @@
                     <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
                 </svg>
             </a>
-            <a class="crud-element-reverse" href="#">
+            <a class="crud-element-reverse" href="{{ path('delete_figure', { 'slug': figure.slug }) }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20">
                     <path class="crud-icon-reverse" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/>
                 </svg>
@@ -26,9 +26,12 @@
        <div class="figure-title col-8 col-md-6 mx-auto p-3 p-md-4 p-lg-5 text-center"> 
             <h2>Le {{ figure.name }}</h2>	
         </div> 
-        <div class="first-image">  
-            <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="card-img-top" alt="{{ figure.images.0.alt }}">
-        </div>
+        
+            <div class="first-image col-12">  
+                <img src="{% if figure.images is not empty %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% else %}{{ asset('/images/site') }}/replace-main.jpg{% endif %}" class="card-img-top" alt="{% if figure.images is not empty %}{{ figure.images.0.alt }}{% else %}Remplacer l'image principale{% endif %}">
+            </div>
+         
+        
         <div class="media d-flex flex-wrap mt-4 mb-2">
             {% for image in figure.images %}
                 <div class="media image-media-element d-flex align-items-center">
@@ -131,36 +134,38 @@
                     </div>  
                 </div>
             {% endfor %}
-            <div class="arrows mb-3 d-flex flex-row justify-content-center">
-                <div>
-                    {% if previous >= 0 %}
-                        <a class="m-3" href="{{ path('show_figure', { slug: figure.slug, offset: previous  }) }}">
-                    {% endif %}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50.5" height="50.5">
-                                <g>
-                                    <path class="{% if previous >= 0 %}frame{% else %}frame-disabled{% endif %}" d="M.25.25h50v50h-50z"/>
-                                    <path class="{% if previous >= 0 %}arrow{% else %}arrow-disabled{% endif %}"  d="M9.173 25.25l32.153-14.891-5.566 6.201-.102.109c-4.777 5.213-4.777 11.947.006 17.166l5.663 6.307L9.173 25.25zm8.15-.001l12.505 5.792c-1.568-3.76-1.568-7.82-.002-11.58l-12.503 5.788z"/>
-                                </g>
-                            </svg>
-                    {% if previous >= 0 %}
-                        </a>
-                    {% endif %}
+            {% if figure.comments is not empty %}
+                <div class="arrows mb-3 d-flex flex-row justify-content-center">
+                    <div>
+                        {% if previous >= 0 %}
+                            <a class="m-3" href="{{ path('show_figure', { slug: figure.slug, offset: previous  }) }}">
+                        {% endif %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50.5" height="50.5">
+                                    <g>
+                                        <path class="{% if previous >= 0 %}frame{% else %}frame-disabled{% endif %}" d="M.25.25h50v50h-50z"/>
+                                        <path class="{% if previous >= 0 %}arrow{% else %}arrow-disabled{% endif %}"  d="M9.173 25.25l32.153-14.891-5.566 6.201-.102.109c-4.777 5.213-4.777 11.947.006 17.166l5.663 6.307L9.173 25.25zm8.15-.001l12.505 5.792c-1.568-3.76-1.568-7.82-.002-11.58l-12.503 5.788z"/>
+                                    </g>
+                                </svg>
+                        {% if previous >= 0 %}
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% if next < comments|length %}
+                            <a class="m-3" href="{{ path('show_figure', { slug: figure.slug, offset: next  }) }}">
+                        {% endif %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="50.5" height="50.5">
+                                    <g>
+                                        <path class="{% if next < comments|length %}frame{% else %}frame-disabled{% endif %}" d="M.25.25h50v50h-50z"/>
+                                        <path class="{% if next < comments|length %}arrow{% else %}arrow-disabled{% endif %}" d="M41.327 25.25L9.174 40.141l5.566-6.201.102-.109c4.777-5.213 4.777-11.947-.006-17.166l-5.663-6.307L41.327 25.25zm-8.15.001l-12.505-5.792c1.568 3.76 1.568 7.82.002 11.58l12.503-5.788z"/>
+                                    </g>
+                                </svg>
+                        {% if next < comments|length %}
+                            </a>
+                        {% endif %}
+                    </div>
                 </div>
-                <div>
-                    {% if next < comments|length %}
-                        <a class="m-3" href="{{ path('show_figure', { slug: figure.slug, offset: next  }) }}">
-                    {% endif %}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50.5" height="50.5">
-                                <g>
-                                    <path class="{% if next < comments|length %}frame{% else %}frame-disabled{% endif %}" d="M.25.25h50v50h-50z"/>
-                                    <path class="{% if next < comments|length %}arrow{% else %}arrow-disabled{% endif %}" d="M41.327 25.25L9.174 40.141l5.566-6.201.102-.109c4.777-5.213 4.777-11.947-.006-17.166l-5.663-6.307L41.327 25.25zm-8.15.001l-12.505-5.792c1.568 3.76 1.568 7.82.002 11.58l12.503-5.788z"/>
-                                </g>
-                            </svg>
-                    {% if next < comments|length %}
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
+            {% endif %}
         </div>
     </section>
 

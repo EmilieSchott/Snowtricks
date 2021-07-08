@@ -20,7 +20,6 @@ class PhotoHandler
         try {
             $photoFile->move($this->figurePhotoDir, $filename);
         } catch (FileException $e) {
-            // unable to upload photo, give up.
         }
 
         return $filename;

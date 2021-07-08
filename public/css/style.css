@@ -233,7 +233,6 @@ a:hover .crud-icon-reverse {
     fill:rgba(13, 114, 156);
 }
 
-
 .down {
     position: absolute;
     bottom : 80px;
@@ -340,13 +339,6 @@ a:hover .crud-icon-reverse {
 }
 
 @media (min-width: 992px) {
-    /*
-    .section-tricks {
-        display:flex;
-        justify-content: space-between; 
-        flex-wrap: wrap;
-    }*/
-
     #tricks {
         max-width: 90%;
         padding-top:0px;
@@ -588,7 +580,7 @@ fieldset {
         height:400px;
         width:400px;
         color: white;
-        top:220px;
+        top:180px;
     }
 }
 
