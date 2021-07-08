@@ -233,6 +233,7 @@ a:hover .crud-icon-reverse {
     fill:rgba(13, 114, 156);
 }
 
+
 .down {
     position: absolute;
     bottom : 80px;
@@ -279,6 +280,7 @@ a:hover .crud-icon-reverse {
 @media (min-width: 992px) {
     .hero {
 	background:url("/images/site/main.jpg") no-repeat -120px 0px;
+<<<<<<< HEAD
 	height:1350px;
     }
 }
@@ -286,6 +288,8 @@ a:hover .crud-icon-reverse {
 @media (min-width: 1200px) {
     .hero {
 	background:url("/images/site/main.jpg") no-repeat center;
+=======
+>>>>>>> 3c76152 (feature/connexion_page|REBASE 4/8)
 	height:1350px;
     }
 }
@@ -339,6 +343,13 @@ a:hover .crud-icon-reverse {
 }
 
 @media (min-width: 992px) {
+    /*
+    .section-tricks {
+        display:flex;
+        justify-content: space-between; 
+        flex-wrap: wrap;
+    }*/
+
     #tricks {
         max-width: 90%;
         padding-top:0px;
