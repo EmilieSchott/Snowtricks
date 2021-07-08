@@ -189,7 +189,11 @@
                     }) }}
                 </div>
                 <div class="figure-buttons align-self-end d-flex justify-content-end mt-3 mb-5">
-                    <a class="btn button col-6" href="{{ path('homepage') }}" role="button">Supprimer la fiche</a>
+                    {% if figure.name is empty %}
+                        <a class="btn button col-6" href="{{ path('homepage') }}" role="button">Supprimer la fiche</a>
+                    {% else %}
+                        <a class="btn button col-6" href="{{ path('delete_figure', { 'slug': figure.slug }) }}" role="button">Supprimer la fiche</a>
+                    {% endif %}
                     <button type="submit" class="button col-6 p-1 btn">Enregistrer la fiche</button>
                 </div>
             </div>
