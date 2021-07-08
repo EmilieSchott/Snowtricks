@@ -2,9 +2,9 @@
 
 {% block title %}Accueil{% endblock %}
 {% block description %} Page d'accueil du site communautaire Snowtricks{% endblock %}
-{% block image %}public/image.jpg{% endblock %}
-{% block type %} <!--Note if this page is an article or a website--> {% endblock %}
-{% block url %} <!-- Site URL to complete : http://www.example.com/--> {% endblock %}
+{% block image %}{{ asset('/images/site/main.jpg') }}{% endblock %}
+{% block type %} Website {% endblock %}
+{% block url %} {{ url('homepage') }} {% endblock %}
 
 
 {% block body %}
@@ -39,12 +39,16 @@
     <section class="mx-auto" id="tricks">
         <div class="section-heading d-flex justify-content-start">
             <h3 class=" my-auto pr-5">Tricks</h3>
-            <a class="btn button" href="{{ path('figure_form') }}" role="button">Crééer</a>
+            {% if app.user %}
+            <div class="mb-3">
+                <a class="btn button" href="{{ path('figure_form') }}" role="button">Crééer</a>
+            </div>
+            {% endif %}
+            
         </div>
-
-        <div class="section-tricks col-12">
+        <div class="section-tricks col-12 d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between justify-content-lg-start ">
             {% for figure in figures %}
-                <div class="card col-2">
+                <div class="card col-2 mx-0 my-3 mx-lg-2 m-xl-4">
                     <img src="{% if figure.images.0.name is not defined %}{{ asset('/images/site') }}/replace-main.jpg {% else %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% endif %}" class="card-img-top" alt="{% if figure.images.0.alt is defined %}{{ figure.images.0.alt }}{% else %}Remplacer l'image principale{% endif %}">
                     <div class="card-body px-1 py-auto d-flex align-items-start justify-content-between flex-wrap">
                         <h5 class="card-heading">
@@ -52,6 +56,7 @@
                                 {{ figure.name }}
                             </a>
                         </h5>
+                        {% if app.user %}
                         <div class="crud-icons-container">
                             <a href="{{ path('figure_form', { slug: figure.slug}) }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
@@ -64,6 +69,7 @@
                                 </svg>
                             </a>
                         </div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

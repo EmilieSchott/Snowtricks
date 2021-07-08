@@ -1,7 +1,7 @@
 security:
     encoders:
         App\Entity\User:
-            algorithm: auto
+            algorithm: bcrypt
 
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -22,7 +22,7 @@ security:
                     - App\Security\AppAuthenticator
             logout:
                 path: app_logout
-                # where to redirect after logout
-                # target: app_any_route
+                target: homepage
 
     access_control:
+      - { path: ^/figure/form, roles: ROLE_USER }
