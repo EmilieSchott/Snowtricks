@@ -1,5 +1,7 @@
 # A collaborative website to share informations and tricks about snowboard figures
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4f8ed1a6d3024dbcaf67ad00b54102a7)](https://app.codacy.com/gh/EmilieSchott/P6-Snowtricks?utm_source=github.com&utm_medium=referral&utm_content=EmilieSchott/P6-Snowtricks&utm_campaign=Badge_Grade_Settings)
+
 ## Installation
 ----------------
 
