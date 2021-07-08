@@ -99,6 +99,46 @@ h1, h2, h3, h4, h5, h6 {
 .arrow {
     fill:#fff;
 }
+/*
+.frame-disabled {
+    fill:rgba(13, 114, 156, 0.8);
+}
+
+.arrow-disabled {
+    fill:#fff;
+}
+*/
+
+g:active .frame, .frame-disabled {
+	fill: rgba(13, 114, 156, 0.8);
+}
+
+g:active .arrow {
+	fill: #7eb0c5;
+}
+
+.arrow-disabled {
+    fill: #015988;
+}
+
+
+@media screen and (min-width:1200px) {
+	.arrow {
+		transition: fill ease-out 300ms;
+	}
+
+	g:hover .arrow {
+		fill: #7eb0c5;
+	}
+}
+
+
+
+
+
+
+
+
 
 g:active .frame, .frame-disabled {
 	fill: rgba(13, 114, 156, 0.8);
@@ -353,9 +393,15 @@ a:hover .crud-icon-reverse {
     }
 }
 
-.first-image-icons {
+.show-first-image-icons {
     position:relative;
     top:50px;
+    right:15px;
+}
+
+.form-first-image-icons {
+    position:relative;
+    top:-350px;
     right:15px;
 }
 
@@ -363,6 +409,11 @@ a:hover .crud-icon-reverse {
     padding: 0px;
     margin-top:-200px;
 
+}
+
+.first-image img {
+    width:100%;
+    margin:auto;
 }
 
 @media (min-width: 576px) {
@@ -383,6 +434,8 @@ a:hover .crud-icon-reverse {
     .first-image {
         margin-top:-400px;
         padding: 0px;
+        height:auto; 
+        overflow: hidden;
     }
 }
 
@@ -440,7 +493,9 @@ a:hover .crud-icon-reverse {
 	}
 }
 
-.comment-datas, .post-media {
+.comment-datas, 
+.post-media,
+.flash-notice {
     border-width: 2px;
     border-color: rgba(13, 114, 156, 0.8);
     border-style: groove;

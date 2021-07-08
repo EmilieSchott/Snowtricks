@@ -25,9 +25,6 @@ class ImageFormHandler
                 $imageName = $this->photoHandler->handlePhoto($photoFile);
                 $figureImages[$imageLoop]->setName($imageName);
             }
-            if (!$photoFile && !$figureImages[$imageLoop]->getAlt()) {
-                $figure->removeImage($figureImages[$imageLoop]);
-            }
             ++$imageLoop;
         }
     }
