@@ -9,6 +9,11 @@
 
 3) In .env, choose your SGBD by remove the # before the DATABASE_URL required and complete asked informations. Then, type "php bin/console doctrine:database:create" in the CLI to create the database.
 
+4) To create tables in the database, type in CLI : "symfony console doctrine:migrations:migrate" 
+
+5) Check fixtures directory to decide which fixtures you want in your database and define an account login and password for you (user 1 in fixtures/User.yaml), then type in CLI : "php bin/console hautelook:fixtures:load".
+
+6) Customize images and texts.
 
 ## Copyrights
 -------------

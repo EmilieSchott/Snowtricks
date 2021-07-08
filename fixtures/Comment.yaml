@@ -1,0 +1,6 @@
+App\Entity\Comment:
+    comment{1..150}:
+      createdAt: <dateTimeBetween('-1 year', 'now', null)>
+      message: <paragraph()>
+      figure: '@figure*'
+      user: '@user*'

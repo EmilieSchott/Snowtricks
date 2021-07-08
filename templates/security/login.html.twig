@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Se connecter {% endblock %}
+{% block description %}Page de connexion {% endblock %}
+{% block image %}{{ asset('/images/site/main.jpg') }}{% endblock %}
+{% block type %} Website {% endblock %}
+{% block url %} {{ url('signin') }} {% endblock %}
+
+{% block body %}
+<section class="login-section col-12 col-xl-6 mx-auto d-flex flex-column align-items-center" >   
+    <h1 class="login-title h3 mb-3 font-weight-normal">Se connecter</h1>
+    <form class="login-form col-10 col-sm-8 col-lg-6 d-flex flex-column align-items-center p-5" method="post">
+        <h1 class="login-title-responsive h3 mb-3 font-weight-normal">Se connecter</h1>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <div class="field-container col-11 col-xl-6 d-flex flex-column align-items-center">
+        <label for="inputUsername" class="mb-2">Nom d'utilisateur</label>
+        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control mb-4" autocomplete="username" required autofocus>
+        <label for="inputPassword" class="mb-2">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="form-control mb-4 col-2" autocomplete="current-password" required>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+
+        <div class="login-link">
+            <a href="#"> Mot de passe oublié ?</a>
+        </div>
+        <button class="button btn btn-lg mt-4" type="submit">
+            Se connecter
+        </button>
+        <div class="login-links-responsive d-flex flex-column align-items-center">
+            <a class="login-link-responsive" href="#">S'enregistrer</a>
+            <a class="login-link-responsive" href="#"> Mot de passe oublié ?</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

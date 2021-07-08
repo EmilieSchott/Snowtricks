@@ -2,11 +2,109 @@
 
 {% block title %}Accueil{% endblock %}
 {% block description %} Page d'accueil du site communautaire Snowtricks{% endblock %}
-{% block image %}public/image.jpg{% endblock %}
-{% block type %} <!--Note if this page is an article or a website--> {% endblock %}
-{% block url %} <!-- Site URL to complete : http://www.example.com/--> {% endblock %}
-{% block author %}Emilie Schott{% endblock %}
+{% block image %}{{ asset('/images/site/main.jpg') }}{% endblock %}
+{% block type %} Website {% endblock %}
+{% block url %} {{ url('homepage') }} {% endblock %}
+
 
 {% block body %}
-    <h1>Homepage</h1>
+    <section class="hero" id="home"> 
+        <div class="container">  
+            <div class="row">
+                <div class="moto col-8 offset-2 col-md-6 offset-md-6 offset-lg-7 p-3 p-md-4 p-lg-5 align-self-end"> 
+                    <h1>SnowTricks :</h1>
+                    <h2>Apprend à surfer parmi les nuages ... Avec style !</h2>	
+                </div> 
+            </div>
+            <div class="down">
+                <a href="{{ path('homepage') }}#tricks">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50.5" height="50.5" viewBox="67.75 74 50.5 50.5">
+                        <g>
+                            <path class="frame" d="M68 74.25h50v50H68z"/>
+                            <path class="arrow" d="M78.109 83.173l6.306 5.664c5.218 4.783 11.953 4.783 17.166.005l.11-.101 6.201-5.567L93 115.327 78.109 83.173zM98.79 94.674c-3.76 1.566-7.82 1.566-11.58-.001l5.792 12.504 5.788-12.503z"/></svg>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice col-8 col-sm-4 p-3 mx-auto d-flex flex-column align-items-center justify-content-center">
+                <h5 class="mb-2">Notice : </h5>
+                <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <section class="mx-auto" id="tricks">
+        <div class="section-heading d-flex justify-content-start">
+            <h3 class=" my-auto pr-5">Tricks</h3>
+            {% if app.user %}
+            <div class="mb-3">
+                <a class="btn button" href="{{ path('figure_form') }}" role="button">Crééer</a>
+            </div>
+            {% endif %}
+            
+        </div>
+        <div class="section-tricks col-12 d-flex flex-column flex-sm-row flex-sm-wrap justify-content-between justify-content-lg-start ">
+            {% for figure in figures %}
+                <div class="card col-2 mx-0 my-3 mx-lg-2 m-xl-4">
+                    <img src="{% if figure.images.0.name is not defined %}{{ asset('/images/site') }}/replace-main.jpg {% else %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% endif %}" class="card-img-top" alt="{% if figure.images.0.alt is defined %}{{ figure.images.0.alt }}{% else %}Remplacer l'image principale{% endif %}">
+                    <div class="card-body px-1 py-auto d-flex align-items-start justify-content-between flex-wrap">
+                        <h5 class="card-heading">
+                            <a href="{{ path('show_figure', { slug: figure.slug}) }}">
+                                {{ figure.name }}
+                            </a>
+                        </h5>
+                        {% if app.user %}
+                        <div class="crud-icons-container">
+                            <a href="{{ path('figure_form', { slug: figure.slug}) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
+                                    <path class="crud-icon" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
+                                </svg>
+                            </a>
+                            <a href="{{ path('delete_figure', { 'slug': figure.slug }) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20">
+                                    <path class="crud-icon" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="load d-grid gap-3">
+        <a class="btn button mx-auto" href="#" role="button">
+            <svg  xmlns="http://www.w3.org/2000/svg" width="30.438" height="30.75">
+                <g fill="#FFF">
+                    <circle cx="27.417" cy="11.412" r="2.455"/>
+                    <path opacity=".1" d="M22.416 24.719a2.463 2.463 0 01.51-2.404 2.436 2.436 0 011.696-.808 2.44 2.44 0 011.771.626 2.46 2.46 0 01.181 3.466 2.437 2.437 0 01-1.695.809 2.434 2.434 0 01-1.771-.627 2.446 2.446 0 01-.692-1.062z"/>
+                    <path opacity=".2" d="M16.847 28.33a2.456 2.456 0 011.577-3.092 2.457 2.457 0 013.093 1.577 2.457 2.457 0 01-1.576 3.092 2.456 2.456 0 01-3.092-1.575l-.002-.002z"/>
+                    <path opacity=".3" d="M10.216 28.677a2.463 2.463 0 01.999-2.816 2.447 2.447 0 011.848-.343 2.453 2.453 0 011.891 2.913 2.459 2.459 0 01-2.912 1.891 2.465 2.465 0 01-1.826-1.645z"/>
+                    <path opacity=".4" d="M4.302 25.668a2.457 2.457 0 014.669-1.523 2.464 2.464 0 01-.51 2.405 2.44 2.44 0 01-1.695.808 2.46 2.46 0 01-2.464-1.69z"/>
+                    <path opacity=".5" d="M.686 20.098a2.46 2.46 0 011.576-3.094c.625-.203 1.29-.151 1.874.146s1.017.805 1.22 1.429a2.46 2.46 0 01-1.576 3.095 2.459 2.459 0 01-3.094-1.576z"/>
+                    <path opacity=".58" d="M.337 13.464a2.458 2.458 0 012.847-3.157 2.465 2.465 0 011.826 1.644 2.458 2.458 0 01-2.846 3.159 2.467 2.467 0 01-1.827-1.646z"/>
+                    <path opacity=".65" d="M3.354 7.555a2.466 2.466 0 01.509-2.405 2.46 2.46 0 014.16.881 2.457 2.457 0 01-4.669 1.524z"/>
+                    <path opacity=".72" d="M8.921 3.936c-.418-1.287.288-2.675 1.576-3.093a2.457 2.457 0 012.946 3.449 2.44 2.44 0 01-1.429 1.221 2.458 2.458 0 01-3.093-1.577z"/>
+                    <path opacity=".8" d="M15.549 3.586A2.46 2.46 0 0118.396.428a2.464 2.464 0 011.826 1.646c.133.406.155.845.065 1.267a2.434 2.434 0 01-1.064 1.548 2.442 2.442 0 01-1.848.343 2.47 2.47 0 01-1.826-1.646z"/>
+                    <path opacity=".88" d="M21.467 6.605a2.464 2.464 0 01.51-2.404 2.458 2.458 0 014.159.881 2.464 2.464 0 01-.511 2.404 2.441 2.441 0 01-1.695.809 2.435 2.435 0 01-1.771-.628 2.429 2.429 0 01-.692-1.062z"/>
+                </g>
+            </svg>
+            <span>Charger plus...</span>
+        </a>
+    </div>
+
+    <div class="up d-flex justify-content-end">
+        <a href="{{ path('homepage') }}#home"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="50.5" height="50.5" viewBox="67.75 74 50.5 50.5">
+                <g>
+                    <path class="frame" d="M68 74.25h50v50H68z"/>
+                    <path class="arrow" d="M93 83.173l14.891 32.153-6.201-5.566-.11-.102c-5.213-4.777-11.947-4.777-17.166.006l-6.306 5.663L93 83.173zm.001 8.15l-5.792 12.505c3.76-1.568 7.82-1.568 11.58-.002l-5.788-12.503z"/></svg>
+                </g>
+            </svg>
+        </a>
+    </div>
 {% endblock %}

@@ -1,0 +1,389 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire de figure {% if figure.name is not empty %}: {{ figure.name }}{% endif %}{% endblock %}
+{% block description %} Page de création ou de modification d'une figure{% endblock %}
+{% block image %}{% if figure.images is not empty %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% else %}{{ asset('/images/site/main.jpg') }}{% endif %}{% endblock %}
+{% block type %} Website {% endblock %}
+{% block url %} {{ url('figure_form', { slug: figure.slug}) }} {% endblock %}
+
+{% block class %}class="presentation-body"{% endblock %}
+
+{% block body %}
+    <section class="figure-form-page col-11 col-sm-10 col-xl-8 mx-auto d-flex flex-column align-items-center">           
+        {{ form_start(figure_form, {'attr' : {
+            'novalidate': 'novalidate',
+            'class': 'col-12 d-flex flex-column'
+        }}) }}
+            <div class="form-figure-title col-8 col-md-6 mx-auto p-3 p-md-4 p-lg-5 text-center"> 
+                <h2>{% if figure.name is not empty %}Le {{ figure.name }} {% else %}Création d'une nouvelle figure{% endif %}</h2>
+            </div>
+            <div class="col-12 mx-auto flex-wrap d-flex flex-row align-items-end justify-content-center mt-4 mb-2">
+                <span class="images col-12 d-flex flex-wrap flex-row justify-content-center" data-prototype="{{ form_widget(figure_form.images.vars.prototype)|e('html_attr') }}">
+                    {% if figure.images is empty %}
+                        <div class="col-12 d-flex flex-wrap flex-row justify-content-end mb-2">
+                            <div class="form-none-first-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
+                                <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
+                                        <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="form-first-image col-12">  
+                                <img src="{{ asset('/images/site') }}/replace-main.jpg" class="card-img-top" alt="Remplacer l'image principale">
+                            </div>
+                        </div>
+                    {% else %}
+                        {% for image in figure_form.images %} 
+                            {% if loop.index == 1 %}
+                                <div class="col-12 d-flex flex-wrap flex-row justify-content-end mb-2">
+                                    <div class="form-first-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
+                                        <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage{{ loop.index }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
+                                                <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="modal fade" id="ModalImage{{ loop.index }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="imageModalLabel">Modifier une image</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-first-image-modal image-form-content mb-3">
+                                                        {{ form_row(image.photo) }}
+                                                        <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="form-first-image col-12">  
+                                        <img src="{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}" class="registered-image card-img-top" alt="{{ figure.images.0.alt }}">
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="media image-media-element d-flex flex-wrap flex-column justify-content-end align-items-center my-2">
+                                    {% if not image.vars.valid %} 
+                                        <img src="{{ asset('/images/site') }}/file-error.jpg" alt="Erreur fichier">
+                                    {% else %} 
+                                        <a href="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}">
+                                            <img src="{{ asset('/images/uploads/figures') }}/{{ image.vars.value.name }}" alt="{{ image.vars.value.alt }}">
+                                        </a>
+                                    {% endif %} 
+                                    <div class="other-image-icons crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
+                                        <a class="crud-element-reverse" data-bs-toggle="modal" data-bs-target="#ModalImage{{ loop.index }}"> 
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
+                                                <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="modal fade" id="ModalImage{{ loop.index }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="imageModalLabel">Modifier une image</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="image-form-content mb-3">
+                                                        {{ form_row(image.photo) }}
+                                                        <p class="mt-3"> La modification de la photo ne se fera qu'au moment de l'enregistrement du formulaire principal.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            {% endif %}     
+                        {% endfor %}
+                    {% endif %} 
+                </span>       
+
+                <span class="videos d-flex flex-wrap flex-row" data-prototype="{{ form_widget(figure_form.videos.vars.prototype)|e('html_attr') }}">
+                    {% if figure.videos is defined %}                    
+                        {% for video in figure_form.videos %} 
+                            <div class="media video-media-element d-flex flex-wrap flex-column align-items-center my-2">
+                                <iframe width="200" src="{{ video.vars.value.url }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <div class="crud-icons-container-reverse align-self-end d-flex justify-content-center mt-2 p-1">
+                                    <a class="crud-element-reverse modal-link" data-bs-toggle="modal" data-bs-target="#ModalVideo{{ loop.index }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="5.094 7.438 20 20">
+                                            <path class="crud-icon-reverse" d="M5.119 26.69a.589.589 0 00.148.575.598.598 0 00.576.149l5.471-1.562-4.633-4.635-1.562 5.473zM24.582 10.439l-2.485-2.485a1.757 1.757 0 00-1.248-.517c-.47 0-.912.184-1.244.513L18.36 9.195l4.975 4.975 1.245-1.245c.332-.332.512-.774.512-1.244a1.739 1.739 0 00-.51-1.242zM7.341 20.217l10.192-10.193L22.509 15 12.317 25.192l-4.976-4.975z"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="modal fade" id="ModalVideo{{ loop.index }}" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="videoModalLabel">Modifier la vidéo</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="video-form-content mb-3">
+                                                    {{ form_row(video.url, {'attr' : {
+                                                        'class': 'col-12'
+                                                    }}) }}
+                                                    <p class="mt-3"> 
+                                                        La modification de la video ne se fera qu'au moment de l'enregistrement du formulaire principal.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div> 
+                            </div>
+                        {% endfor %}                  
+                    {% endif %}
+                </span>
+            </div>    
+            
+            <button class="btn button media-phone-version my-2 col-4 mx-auto" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#ModalMedia">
+                Voir les médias
+            </button>
+
+            <div class="new-media-form col-11 col-xl-6 mx-auto d-flex flex-column align-items-start">
+                <div class="d-flex align-self-center justify-content-center col-12 flex-wrap">
+                    <span class="image-media-element-button add d-flex flex-column align-items-center my-1 m-sm-3 m-lg-4">
+                        <a type="button" class="add_image_link" data-collection-holder-class="images"><img src="{{ asset('/images/site') }}/add-image.jpg" alt="Ajouter une image"></a> 
+                    </span> 
+                    <span class="video-media-element-button add d-flex flex-column align-items-center  my-1 m-sm-3 m-lg-4">
+                        <a type="button" class="add_video_link" data-collection-holder-class="videos"><img src="{{ asset('/images/site') }}/add-video.jpg" alt="Ajouter une video"></a> 
+                    </span> 
+                </div>
+            </div>
+            
+            <div class="figure-datas col-11 col-xl-6 mx-auto d-flex flex-column align-items-start">
+                <div class="figure-name col-12 col-xl-8 mb-3">
+                    {{ form_row(figure_form.name, {
+                        'attr' : {
+                            'class': 'figure-field col-12', 
+                            'placeholder': 'Nom de la figure',
+                        }
+                    }) }}
+                </div> 
+                <div class="figure-description col-12">
+                    {{ form_row(figure_form.description, {
+                        'attr' : {
+                            'class': 'figure-field col-12', 
+                            'placeholder': 'Description de la figure',
+                            'rows': '10'
+                        }
+                    }) }}
+                </div> 
+                <div class="figure-group col-6">
+                    {{ form_row(figure_form.figureGroup, {
+                        'attr' : {
+                            'class': 'figure-field col-12',
+                        }
+                    }) }}
+                </div>
+                <div class="figure-buttons align-self-end d-flex justify-content-end mt-3 mb-5">
+                    {% if figure.name is empty %}
+                        <a class="btn button col-6" href="{{ path('homepage') }}" role="button">Supprimer la fiche</a>
+                    {% else %}
+                        <a class="btn button col-6" href="{{ path('delete_figure', { 'slug': figure.slug }) }}" role="button">Supprimer la fiche</a>
+                    {% endif %}
+                    <button type="submit" class="button col-6 p-1 btn">Enregistrer la fiche</button>
+                </div>
+            </div>
+        <input type="hidden" name="token" value="{{ csrf_token('figure_form') }}"/>
+        {{ form_end(figure_form)}}
+    </section>
+{% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}   
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous">
+        </script>
+
+        <script>
+            jQuery(document).ready(function() {
+                // Get the ul that holds the collection of videos
+                var $videosCollectionHolder = $('span.videos');
+
+                // add a delete link to all of the existing tag form li elements
+                $videosCollectionHolder.find('.crud-icons-container-reverse').each(function() {
+                    addDeleteLink($(this), $(this).parent());
+                });
+
+                // count the current form inputs we have (e.g. 2), use that as the new
+                // index when inserting a new item (e.g. 2)
+                $videosCollectionHolder.data('videoIndex', $videosCollectionHolder.find('.modal').length);
+
+                $('body').on('click', '.add_video_link', function(e) {
+                    var $videosCollectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
+                    // add a new video form (see next code block)
+                    addVideoFormToCollection($videosCollectionHolderClass);
+                })
+            });
+
+            function addVideoFormToCollection($videosCollectionHolderClass) {
+                // Get the ul that holds the collection of videos
+                var $videosCollectionHolder = $('.' + $videosCollectionHolderClass);
+
+                // Get the data-prototype explained earlier
+                var prototype = $videosCollectionHolder.data('prototype');
+
+                // get the new index
+                var videoIndex = $videosCollectionHolder.data('videoIndex');
+
+                var newForm = prototype;
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                newForm = newForm.replace(/__name__/g, videoIndex);
+
+                // increase the index with one for the next item
+                $videosCollectionHolder.data('videoIndex', videoIndex + 1);
+
+                // Display the form in the page in a div, before the "Add a video" link div
+                // var $newFormDiv = $('<div class="media-element d-flex flex-wrap flex-column align-items-center"></div>').append(newForm);
+                var $newFormDiv = $('<div class="post-media col-12 mx-auto d-flex flex-column justify-content-between align-items-left my-2 p-2"><h5>Ajout d\'une nouvelle vidéo</h5></div>').append(newForm);
+                $newFormDiv.append("<p>L'url doit provenir d'un hébergeur de vidéo (type Youtube, Dailymotion, etc). Vous trouverez le lien spécial pour intégrer une vidéo  en cliquant sur 'partager' puis sur 'intégrer'.</p>")
+
+                // Add the new form at the end of the list
+                $(".new-media-form").append($newFormDiv)
+
+                // add a delete link to the new form
+                addVideoFormDeleteLink($newFormDiv);
+            }
+
+            function addVideoFormDeleteLink($videoFormDiv) {
+                var $removeFormButton = $('<div class="crud-icons-container-reverse align-self-end d-flex justify-content-end mt-2 p-1"><a class="crud-element-reverse" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20"><path class="crud-icon-reverse" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/></svg></a></div>');
+                $videoFormDiv.append($removeFormButton);
+
+                $removeFormButton.on('click', function(e) {
+                    // remove the div for the video form
+                    $videoFormDiv.remove();
+                });
+            }
+
+            jQuery(document).ready(function() {
+                // Get the ul that holds the collection of images
+                var $imagesCollectionHolder = $('span.images');
+
+                // count the current form inputs we have (e.g. 2), use that as the new
+                // index when inserting a new item (e.g. 2)
+                $imagesCollectionHolder.data('imageIndex', $imagesCollectionHolder.find('.modal').length);
+
+                // add a delete link to all of the existing tag form li elements
+                $imagesCollectionHolder.find('.other-image-icons').each(function() {
+                    addDeleteLink($(this), $(this).parent());
+                });
+
+                var $imagesCollectionHolderClass = $(".add_image_link").data('collectionHolderClass');
+                if(!$(".form-first-image-icons").length){
+                    createFirstImageForm($imagesCollectionHolderClass);
+                }
+
+                if($(".form-first-image-icons").length){          
+                    var $firstImageHolder = $(".form-first-image");
+                    var $firstImageIcons = $(".form-first-image-icons");     
+                    addDeleteLink($firstImageIcons, $firstImageHolder.children());
+                //    createFirstImageForm($imagesCollectionHolderClass);
+                }
+
+                $('body').on('click', '.add_image_link', function(e) {
+                    var $imagesCollectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
+                    // add a new image form (see next code block)
+                    addImageFormToCollection($imagesCollectionHolderClass);
+                })
+            });
+
+            function createFirstImageForm($imagesCollectionHolderClass) {
+                // Get the ul that holds the collection of images
+                var $imagesCollectionHolder = $('.' + $imagesCollectionHolderClass);
+
+                // Get the data-prototype explained earlier
+                var prototype = $imagesCollectionHolder.data('prototype');
+
+                var newForm = prototype;
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                newForm = newForm.replace(/__name__/g, 1);
+
+                // Display the form in the page in a div, before the "Add an image" link div
+                var $newFormDiv = $('<div class="post-media col-12 mx-auto d-flex flex-column justify-content-between align-items-left my-2 p-2"><h5>Image principale à définir.</h5></div>').append(newForm);
+
+                if(!$(".form-first-image-icons").length){
+                    $newFormDiv.append("<p>L'image doit être au format paysage, faire moins de 2Mo et moins de 2000px de large.<br/> Si aucune image n'ait choisi à la création de la fiche, une image générique sera affichée en attendant un choix lors d'une prochaine édition.</p>")
+                    // Add the new form at the end of the list
+                    $(".new-media-form").append($newFormDiv)
+                }
+
+                if($(".form-first-image-icons").length){
+                    $newFormDiv.append("<p>L'image doit être au format paysage, faire moins de 2Mo et moins de 2000px de large.</p>")
+                    // Add the new form at the end of the list
+                    $(".form-first-image-modal").append($newFormDiv)
+                }
+            }
+
+
+            function addImageFormToCollection($imagesCollectionHolderClass) {
+                // Get the ul that holds the collection of images
+                var $imagesCollectionHolder = $('.' + $imagesCollectionHolderClass);
+
+                // Get the data-prototype explained earlier
+                var prototype = $imagesCollectionHolder.data('prototype');
+
+                // get the new index
+                var imageIndex = $imagesCollectionHolder.data('imageIndex');
+
+                var newForm = prototype;
+
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                newForm = newForm.replace(/__name__/g, imageIndex);
+
+                // increase the index with one for the next item
+                $imagesCollectionHolder.data('imageIndex', imageIndex + 1);
+
+                // Display the form in the page in a div, before the "Add an image" link div
+                var $newFormDiv = $('<div class="post-media col-12 mx-auto d-flex flex-column justify-content-between align-items-left my-2 p-2"><h5>Ajout d\'une nouvelle image</h5></div>').append(newForm);
+                $newFormDiv.append("<p>L'image doit être au format paysage, faire moins de 2Mo et moins de 2000px de large.</p>")
+                // Add the new form at the end of the list
+                $(".new-media-form").append($newFormDiv)
+
+                // add a delete link to the new form
+                addImageFormDeleteLink($newFormDiv);
+            }
+
+            function addImageFormDeleteLink($imageFormDiv) {
+                var $removeFormButton = $('<div class="crud-icons-container-reverse align-self-end d-flex justify-content-end mt-2 p-1"><a class="crud-element-reverse" ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20"><path class="crud-icon-reverse" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/></svg></a></div>');
+                $imageFormDiv.append($removeFormButton);
+
+                $removeFormButton.on('click', function(e) {
+                    $imageFormDiv.remove();
+                });
+            }
+
+            function addDeleteLink($iconsContainer, $entityHolder) {
+                var $removeImageButton = $('<a class="crud-element-reverse"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="2.313 5.094 20 20"><path class="crud-icon-reverse" d="M18.875 7.594h-3.438v-.625a1.874 1.874 0 00-1.875-1.875h-2.499a1.874 1.874 0 00-1.875 1.875v.625H5.75c-.863 0-1.563.699-1.563 1.563v1.25c0 .345.28.625.625.625h14.999c.346 0 .625-.28.625-.625v-1.25a1.56 1.56 0 00-1.561-1.563zm-8.437-.625c0-.344.28-.625.625-.625h2.499c.346 0 .627.281.627.625v.625h-3.75l-.001-.625zM5.375 12.281a.196.196 0 00-.195.205l.516 10.821a1.874 1.874 0 001.872 1.786h9.491a1.873 1.873 0 001.873-1.786l.516-10.821a.197.197 0 00-.195-.205H5.375zm9.438 1.563a.625.625 0 011.252 0v8.125a.626.626 0 01-1.252 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125zm-3.125 0a.625.625 0 111.251 0v8.125a.625.625 0 01-1.251 0v-8.125z"/></svg></a>');
+                $iconsContainer.append($removeImageButton);
+
+                $removeImageButton.on('click', function(e) {
+                    var $entityHolderParent = $entityHolder.parent();
+                    $entityHolder.remove();
+                    if(!$(".registered-image").length) {
+                        $entityHolderParent.append("<img src='{{ asset('/images/site') }}/replace-main.jpg' class='card-img-top' alt='Remplacer l\'image principale'>");
+                    }
+                });
+            }
+        </script> 
+
+    {% endblock %}
