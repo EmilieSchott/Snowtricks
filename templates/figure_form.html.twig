@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}formulaire de figure{% endblock %}
+{% block title %}Formulaire de figure {% if figure.name is not empty %}: {{ figure.name }}{% endif %}{% endblock %}
 {% block description %} Page de création ou de modification d'une figure{% endblock %}
-{% block image %}public/image.jpg{% endblock %}
-{% block type %} <!--Note if this page is an article or a website--> {% endblock %}
-{% block url %} <!-- Site URL to complete : http://www.example.com/--> {% endblock %}
+{% block image %}{% if figure.images is not empty %}{{ asset('/images/uploads/figures') }}/{{ figure.images.0.name }}{% else %}{{ asset('/images/site/main.jpg') }}{% endif %}{% endblock %}
+{% block type %} Website {% endblock %}
+{% block url %} {{ url('figure_form', { slug: figure.slug}) }} {% endblock %}
 
 {% block class %}class="presentation-body"{% endblock %}
 

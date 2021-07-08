@@ -2,9 +2,9 @@
 
 {% block title %} Se connecter {% endblock %}
 {% block description %}Page de connexion {% endblock %}
-{% block image %}public/image.jpg{% endblock %}
-{% block type %} <!--Note if this page is an article or a website--> {% endblock %}
-{% block url %} <!-- Site URL to complete : http://www.example.com/--> {% endblock %}
+{% block image %}{{ asset('/images/site/main.jpg') }}{% endblock %}
+{% block type %} Website {% endblock %}
+{% block url %} {{ url('signin') }} {% endblock %}
 
 {% block body %}
 <section class="login-section col-12 col-xl-6 mx-auto d-flex flex-column align-items-center" >   
